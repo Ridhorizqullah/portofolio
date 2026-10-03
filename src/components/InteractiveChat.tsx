@@ -122,7 +122,7 @@ export function InteractiveChat() {
   };
 
   return (
-    <section id="contact" className="py-20 px-4 relative">
+    <section id="contact" className="py-20 px-4 relative no-print">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="mb-4 text-white">
@@ -196,7 +196,7 @@ export function InteractiveChat() {
                   <Github className="w-6 h-6 text-white" />
                 </a>
                 <a
-                  href="https://www.linkedin.com/in/muhammad-ridho-rizqullah-5107852ba"
+                  href="https://www.linkedin.com/in/ridho-rizqullah-9677b53ab"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-12 h-12 bg-slate-700 hover:bg-cyan-500 rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-110"
@@ -285,8 +285,8 @@ export function InteractiveChat() {
                           <button
                             onClick={() => handleLike(comment.id)}
                             className={`flex items-center gap-1 text-xs transition-colors ${likedComments.has(comment.id)
-                                ? 'text-cyan-400'
-                                : 'text-gray-500 hover:text-cyan-400'
+                              ? 'text-cyan-400'
+                              : 'text-gray-500 hover:text-cyan-400'
                               }`}
                           >
                             <ThumbsUp className={`w-4 h-4 ${likedComments.has(comment.id) ? 'fill-current' : ''}`} />

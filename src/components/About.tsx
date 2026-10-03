@@ -29,39 +29,35 @@ export function About() {
           <div className="space-y-6">
             <div className="bg-slate-800/50 backdrop-blur-sm p-8 rounded-2xl border border-slate-700 shadow-xl">
               <h3 className="text-2xl mb-4 text-white">
-                Passionate About <span className="text-cyan-400">Technology</span>
+                Professional <span className="text-cyan-400">Summary</span>
               </h3>
-              <p className="text-gray-300 leading-relaxed mb-6">
-                I am a 5th semester Informatics Engineering student at Universitas Muhammadiyah Yogyakarta (UMY)
-                with a 3.48 GPA, specializing in Full-Stack Development, UI/UX Design, and Web3 Development.
-                I have successfully built 8+ production-ready applications across various platforms including web, mobile, and blockchain.
+              <p className="text-gray-300 leading-relaxed mb-4">
+                Final-year Informatics student at Universitas Muhammadiyah Yogyakarta (<span className="text-green-400 font-semibold">GPA 3.51/4.00</span>) specializing in Data Analytics and Computer Vision. Built and tested a Retrieval-Augmented Generation (RAG) assistant end to end (embeddings, vector database, LLM-ready API, WhatsApp integration) and evaluated it for accuracy and response time.
               </p>
-              <p className="text-gray-300 leading-relaxed mb-6">
-                As an active member of KMTI (IT Student Family) serving in the Media & Production Division,
-                I combine technical expertise with creativity in content creation. My experience includes
-                organizing major tech events such as IT SPECTA and MATAF, while continuously expanding my knowledge
-                through various workshops and competitions.
+              <p className="text-gray-300 leading-relaxed mb-4">
+                Backend internship experience at the <span className="text-cyan-400 font-medium">Ministry of Industry of Indonesia</span> (Laravel, PostgreSQL, REST API). Curious, self-driven, and comfortable turning ambiguous problems into documented, reproducible prototypes.
               </p>
-              <p className="text-gray-300 leading-relaxed">
-                Recently completed Samsung Innovation Campus (AI in Everyday Life) and participated in
-                a national-level UI/UX competition. I'm passionate about creating innovative digital solutions that
-                combine cutting-edge technology with user-centered design principles.
+              <p className="text-emerald-400 font-medium leading-relaxed bg-emerald-500/10 border border-emerald-500/20 p-3 rounded-xl">
+                ⚡ Available for a 12-month, Work-From-Home (WFH) internship in AI Engineering, Multimodal AI, RAG, or Backend Development.
               </p>
             </div>
 
             {/* Highlight Cards */}
             <div className="grid grid-cols-3 gap-4">
               <div className="bg-slate-800/50 backdrop-blur-sm p-4 rounded-xl border border-slate-700 text-center hover:border-cyan-400/50 transition-colors group">
-                <Code2 className="w-8 h-8 mx-auto mb-2 text-cyan-400 group-hover:scale-110 transition-transform" />
-                <div className="text-sm text-gray-300">Full-Stack Dev</div>
+                <Brain className="w-8 h-8 mx-auto mb-2 text-cyan-400 group-hover:scale-110 transition-transform" />
+                <div className="text-sm font-medium text-white">Multimodal & RAG</div>
+                <div className="text-xs text-gray-400 mt-1">ChromaDB • Embeddings</div>
               </div>
               <div className="bg-slate-800/50 backdrop-blur-sm p-4 rounded-xl border border-slate-700 text-center hover:border-green-400/50 transition-colors group">
-                <Brain className="w-8 h-8 mx-auto mb-2 text-green-400 group-hover:scale-110 transition-transform" />
-                <div className="text-sm text-gray-300">AI & Web3</div>
+                <Code2 className="w-8 h-8 mx-auto mb-2 text-green-400 group-hover:scale-110 transition-transform" />
+                <div className="text-sm font-medium text-white">Data & Vision</div>
+                <div className="text-xs text-gray-400 mt-1">OpenCV • Python Analytics</div>
               </div>
               <div className="bg-slate-800/50 backdrop-blur-sm p-4 rounded-xl border border-slate-700 text-center hover:border-cyan-400/50 transition-colors group">
                 <Laptop className="w-8 h-8 mx-auto mb-2 text-cyan-400 group-hover:scale-110 transition-transform" />
-                <div className="text-sm text-gray-300">UI/UX Design</div>
+                <div className="text-sm font-medium text-white">Backend & APIs</div>
+                <div className="text-xs text-gray-400 mt-1">FastAPI • Laravel • Docker</div>
               </div>
             </div>
           </div>

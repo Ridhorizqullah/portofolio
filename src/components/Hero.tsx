@@ -2,6 +2,10 @@ import { ArrowRight, Download } from 'lucide-react';
 import profilePhoto from '../assets/profile-photo.jpg';
 
 export function Hero() {
+  const handlePrint = () => {
+    window.print();
+  };
+
   const scrollToSection = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
   };
@@ -24,27 +28,44 @@ export function Hero() {
           </div>
         </div>
 
+        {/* Availability Badge */}
+        <div className="mb-4 inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-400/30 text-cyan-300 text-sm font-medium">
+          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+          <span>Available for 12-Month WFH Internship</span>
+        </div>
+
         {/* Name */}
-        <h1 className="mb-4 text-white">
+        <h1 className="mb-4 text-white text-3xl sm:text-5xl font-bold tracking-tight">
           <span className="bg-gradient-to-r from-cyan-400 via-green-400 to-cyan-400 bg-clip-text text-transparent">
             Muhammad Ridho Rizqullah
           </span>
         </h1>
 
         {/* Title */}
-        <div className="mb-6 text-xl md:text-2xl text-gray-300 flex flex-wrap items-center justify-center gap-2">
-          <span>Web Developer</span>
-          <span className="text-cyan-400">|</span>
-          <span>Mobile Developer</span>
-          <span className="text-cyan-400">|</span>
-          <span>UI/UX</span>
+        <div className="mb-4 text-lg md:text-2xl text-gray-200 font-semibold flex flex-wrap items-center justify-center gap-2">
+          <span className="text-cyan-400">AI Engineer Intern Candidate</span>
+          <span className="text-gray-500 hidden sm:inline">—</span>
+          <span className="text-gray-300 text-base md:text-xl">Multimodal AI, RAG & Computer Vision</span>
         </div>
 
-        {/* Tagline */}
-        <p className="mb-10 text-lg text-gray-400 max-w-2xl mx-auto">
-          5th semester Informatics Engineering student at University Muhammadiyah Yogyakarta with 3.48 GPA.
-          Building innovative digital solutions across multiple platforms - web, mobile, and blockchain.
-          Passionate about creating secure, modern, and user-friendly digital experiences.
+        {/* Location & Quick Contact */}
+        <div className="mb-6 flex flex-wrap items-center justify-center gap-4 text-sm text-gray-400">
+          <span className="flex items-center gap-1.5">
+            <span className="text-cyan-400">📍</span> Yogyakarta, Indonesia
+          </span>
+          <span className="text-slate-600 hidden sm:inline">•</span>
+          <a href="tel:+6281249934103" className="hover:text-cyan-400 transition-colors flex items-center gap-1.5">
+            <span className="text-green-400">📞</span> +62 812-4993-4103
+          </a>
+          <span className="text-slate-600 hidden sm:inline">•</span>
+          <a href="mailto:ridhorizqullah3@gmail.com" className="hover:text-cyan-400 transition-colors flex items-center gap-1.5">
+            <span className="text-cyan-400">✉️</span> ridhorizqullah3@gmail.com
+          </a>
+        </div>
+
+        {/* Tagline / Professional Summary */}
+        <p className="mb-10 text-base md:text-lg text-gray-300 max-w-3xl mx-auto leading-relaxed">
+          Final-year Informatics student at Universitas Muhammadiyah Yogyakarta (<span className="text-green-400 font-medium">GPA 3.51/4.00</span>) specializing in Data Analytics and Computer Vision. Built and tested end-to-end RAG assistants (SentenceTransformers, ChromaDB, FastAPI, WhatsApp integration) and backed by Ministry of Industry internship experience.
         </p>
 
         {/* CTA Buttons */}
@@ -57,11 +78,17 @@ export function Hero() {
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </button>
           <button
+            onClick={handlePrint}
+            className="group px-8 py-4 bg-green-500/10 hover:bg-green-500/20 text-green-400 rounded-lg transition-all duration-300 flex items-center gap-2 border border-green-400/30 hover:border-green-400/60 hover:scale-105 no-print"
+          >
+            Download CV
+            <Download className="w-5 h-5 group-hover:translate-y-1 transition-transform" />
+          </button>
+          <button
             onClick={() => scrollToSection('contact')}
-            className="group px-8 py-4 bg-slate-700/50 hover:bg-slate-700 text-white rounded-lg transition-all duration-300 flex items-center gap-2 border border-green-400/30 hover:border-green-400/60 hover:scale-105"
+            className="group px-8 py-4 bg-slate-700/50 hover:bg-slate-700 text-white rounded-lg transition-all duration-300 flex items-center gap-2 border border-slate-600 hover:border-cyan-400/50 hover:scale-105"
           >
             Contact Me
-            <Download className="w-5 h-5 group-hover:translate-y-1 transition-transform" />
           </button>
         </div>
 

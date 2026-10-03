@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Award, X } from 'lucide-react';
+import { Award, X, FileText, Download, ExternalLink } from 'lucide-react';
 import { ImageWithFallback } from './figma/ImageWithFallback';
+import certDeploymentDocker from '../assets/cert-deployment-docker.png';
 import certNSE from 'figma:asset/43050c05b7e4e58d5111ef08efa9a5d413b215d3.png';
 import certMSI from 'figma:asset/12ada9ef404e3e643847ffbe1e67fea7b22c7b9c.png';
 import certSamsung from 'figma:asset/c2aacce0b55c216cc4e956e179589840bd97c287.png';
@@ -16,12 +17,23 @@ interface Certificate {
   date: string;
   image: string;
   description: string;
+  certificateNo?: string;
+  pdfUrl?: string;
 }
 
 export function Certificates() {
   const [selectedCert, setSelectedCert] = useState<Certificate | null>(null);
 
   const certificates: Certificate[] = [
+    {
+      title: 'Deployment Perangkat Lunak (Docker & Cloud Deployment)',
+      organization: 'Universitas Muhammadiyah Yogyakarta & TLab',
+      date: 'Period June 2026',
+      certificateNo: '56/HRGA-TLab/STF/VII/2026',
+      image: certDeploymentDocker,
+      pdfUrl: '/sertifikat-deployment-docker.pdf',
+      description: 'Official Certification for Software Deployment (Deployment Perangkat Lunak) covering Docker containerization, cloud deployment workflows, and modern DevOps architecture issued to Muhammad Ridho Rizqullah by UMY in collaboration with TLab.',
+    },
     {
       title: 'Samsung Innovation Campus - AI in Everyday Life',
       organization: 'Samsung Innovation Campus Batch 6 - Hacktiv8 Indonesia',
@@ -110,6 +122,12 @@ export function Certificates() {
                 <div className="absolute top-4 right-4 bg-cyan-500/20 backdrop-blur-sm p-2 rounded-lg border border-cyan-400/50">
                   <Award className="w-5 h-5 text-cyan-400" />
                 </div>
+                {cert.pdfUrl && (
+                  <div className="absolute top-4 left-4 bg-slate-900/80 backdrop-blur-sm px-2.5 py-1 rounded-full border border-cyan-400/40 text-cyan-300 text-xs flex items-center gap-1 font-medium">
+                    <FileText className="w-3.5 h-3.5 text-cyan-400" />
+                    <span>PDF Verified</span>
+                  </div>
+                )}
               </div>
 
               <div className="p-6">
@@ -137,7 +155,7 @@ export function Certificates() {
                 <ImageWithFallback
                   src={selectedCert.image}
                   alt={selectedCert.title}
-                  className="w-full h-64 object-cover"
+                  className="w-full h-72 object-contain bg-slate-900"
                 />
                 <button
                   onClick={() => setSelectedCert(null)}
@@ -156,12 +174,40 @@ export function Certificates() {
                     <h3 className="text-2xl text-white mb-2">{selectedCert.title}</h3>
                     <p className="text-green-400 mb-1">{selectedCert.organization}</p>
                     <p className="text-gray-400 text-sm">{selectedCert.date}</p>
+                    {selectedCert.certificateNo && (
+                      <p className="text-cyan-400 text-xs mt-1 font-mono">
+                        No: {selectedCert.certificateNo}
+                      </p>
+                    )}
                   </div>
                 </div>
 
-                <div className="border-t border-slate-700 pt-4">
+                <div className="border-t border-slate-700 pt-4 mb-6">
                   <p className="text-gray-300 leading-relaxed">{selectedCert.description}</p>
                 </div>
+
+                {selectedCert.pdfUrl && (
+                  <div className="pt-2 flex flex-wrap gap-4">
+                    <a
+                      href={selectedCert.pdfUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-cyan-500 to-green-500 hover:from-cyan-600 hover:to-green-600 text-white font-medium rounded-xl transition-all duration-300 shadow-lg shadow-cyan-500/20"
+                    >
+                      <FileText className="w-5 h-5" />
+                      <span>View Original PDF</span>
+                      <ExternalLink className="w-4 h-4" />
+                    </a>
+                    <a
+                      href={selectedCert.pdfUrl}
+                      download="Sertifikat-UMY-2026-deployment-docker.pdf"
+                      className="inline-flex items-center gap-2 px-6 py-3 bg-slate-700/60 hover:bg-slate-700 text-gray-200 font-medium rounded-xl border border-slate-600 transition-all duration-300"
+                    >
+                      <Download className="w-5 h-5 text-cyan-400" />
+                      <span>Download PDF</span>
+                    </a>
+                  </div>
+                )}
               </div>
             </div>
           </div>

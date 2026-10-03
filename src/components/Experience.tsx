@@ -1,113 +1,95 @@
-import { GraduationCap, Briefcase, Calendar } from 'lucide-react';
+import { GraduationCap, Briefcase, Calendar, Building2, Users } from 'lucide-react';
 
 export function Experience() {
   const timeline = [
     {
+      type: 'work',
+      title: 'Junior Backend Developer Intern',
+      organization: 'Ministry of Industry, Republic of Indonesia',
+      period: 'Apr 2026 – Jun 2026',
+      description: 'Developed and tested RESTful API endpoints for internal government module data exchange, optimized queries, and implemented MVC architecture.',
+      achievements: [
+        'Developed and tested RESTful API endpoints for data exchange between internal modules (Laravel, PostgreSQL)',
+        'Helped design relational database schemas and optimize PostgreSQL queries for higher performance',
+        'Applied clean MVC structure and debugged regularly with the development team',
+      ],
+    },
+    {
       type: 'education',
-      title: 'Bachelor of Informatics Engineering',
-      organization: 'University Muhammadiyah Yogyakarta',
-      period: '2023 - 2025',
-      description: 'Currently pursuing Bachelor\'s degree in Informatics Engineering with focus on Software Engineering, Web Development, Mobile Development, and Cybersecurity.',
+      title: 'S1 Informatics (Bachelor of Computer Science)',
+      organization: 'Universitas Muhammadiyah Yogyakarta',
+      period: '2023 – Present',
+      description: 'Final-year Informatics student with high academic standing specializing in Data Analytics, Computer Vision, and Artificial Intelligence.',
       achievements: [
-        'Current GPA: 3.48 / 4.00',
-        'Specialized in Full-Stack Development and UI/UX Design',
-        'Active in IT Student Organization (KMTI) and multiple tech committees',
+        'GPA: 3.51 / 4.00',
+        'Concentration: Data Analytics & Computer Vision',
+        'Capstone Project: Smart Agriculture AI Assistant (RAG Pipeline, ChromaDB & WhatsApp Cloud API)',
+      ],
+    },
+    {
+      type: 'certification',
+      title: 'Samsung Innovation Campus Batch 6: AI in Everyday Life',
+      organization: 'Samsung & Hacktiv8 Indonesia',
+      period: 'Jan 2025',
+      description: 'Completed Stage 1 of Samsung Innovation Campus Batch 6 focusing on practical AI engineering principles and machine learning integration.',
+      achievements: [
+        'Studied AI fundamentals, text & vision models, and real-world system applications',
+        'Completed applied machine learning assignments and earned formal certification',
       ],
     },
     {
       type: 'experience',
-      title: 'Samsung Innovation Campus - AI in Everyday Life',
-      organization: 'Samsung Innovation Campus Batch 6 - Hacktiv8 Indonesia',
-      period: 'January 2025',
-      description: 'Completed Stage 1 of Samsung Innovation Campus Batch 6 2024/2025 program focusing on practical AI applications in everyday life.',
+      title: 'Participant, UINIC 7.0 National UI/UX Design Competition',
+      organization: 'UIN Sunan Kalijaga',
+      period: 'Dec 2024',
+      description: 'Competed at national level with "Designing Intuitive Experiences for a Sustainable Digital Future" solving real user pain-points.',
       achievements: [
-        'Studied AI fundamentals and real-world applications',
-        'Explored AI integration in daily technology usage',
-        'Received Certificate of Participation from Samsung & Hacktiv8',
+        'Created interactive Figma prototypes with design systems and user journey flows',
+        'Presented user-centric digital architecture to the national evaluation panel',
       ],
     },
     {
-      type: 'experience',
-      title: 'UI/UX Design Competition Participant',
-      organization: 'UINIC 7.0 2025 - HMPS Informatika UIN Sunan Kalijaga',
-      period: '9 December 2024',
-      description: 'Participated in national-level UI/UX Design Competition with theme "Designing Intuitive Experiences for a Sustainable Digital Future".',
+      type: 'certification',
+      title: 'AI Cloud Class: How is AI Changing The World',
+      organization: 'MSI x Tirto.id',
+      period: 'Nov 2024',
+      description: 'Explored scalable cloud architectures powering large language models and modern artificial intelligence systems.',
       achievements: [
-        'Competed in national UI/UX design competition',
-        'Designed sustainable and intuitive user experiences',
-        'Applied design thinking methodology to real-world problems',
-      ],
-    },
-    {
-      type: 'experience',
-      title: 'KMTI MEDPRO Division',
-      organization: 'Keluarga Mahasiswa Teknologi Informasi UMY',
-      period: '2024 - 2025',
-      description: 'Serving as active member in MEDPRO (Media & Promotion) Division, responsible for managing social media content and promotional materials.',
-      achievements: [
-        'Creating engaging content for IT student community',
-        'Managing social media platforms and digital campaigns',
-        'Collaborating with team to promote tech events and workshops',
-      ],
-    },
-    {
-      type: 'experience',
-      title: 'MATAF Equipment Division',
-      organization: 'Prodi Teknologi Informasi UMY',
-      period: '2024',
-      description: 'Event Committee member for MATAF with theme "Unlocking Knowledge for Building Progress to Inspiring Future".',
-      achievements: [
-        'Managed event equipment and technical logistics',
-        'Coordinated with team members for smooth event execution',
-        'Ensured proper setup and maintenance of event facilities',
-      ],
-    },
-    {
-      type: 'experience',
-      title: 'Kineidoscope Screening Committee',
-      organization: 'MM Kine Klub UMY',
-      period: 'November 2024',
-      description: 'Served as screening committee member for Kineidoscope campus film festival event.',
-      achievements: [
-        'Reviewed and evaluated film submissions',
-        'Participated in selection process for film festival',
-        'Contributed to organizing campus creative event',
-      ],
-    },
-    {
-      type: 'experience',
-      title: 'AI Workshop Participant',
-      organization: 'MSI x Tirto.id - AI Cloud Class',
-      period: 'November 2024',
-      description: 'Completed "How is AI Changing The World" workshop exploring AI applications and cloud technology impact on modern society.',
-      achievements: [
-        'Learned about AI and cloud computing integration',
-        'Explored real-world AI use cases and industry applications',
+        'Gained in-depth knowledge on cloud GPU infrastructure and AI service orchestration',
         'Received Certificate of Appreciation from MSI and Tirto.id',
       ],
     },
     {
-      type: 'experience',
-      title: 'Entrepreneurship Seminar Participant',
-      organization: 'National Seminar of Entrepreneurship (NSE)#2 - Kemenkes Poltekkes Yogyakarta',
-      period: 'October 2024',
-      description: 'Participated in National Seminar of Entrepreneurship organized by Health Polytechnic of Yogyakarta, Ministry of Health.',
+      type: 'organization',
+      title: 'Media & Promotion Division (MEDPRO)',
+      organization: 'Keluarga Mahasiswa Teknologi Informasi (KMTI) UMY',
+      period: '2024 – 2025',
+      description: 'Active division member producing tech content, managing social media campaigns, and promoting student development workshops.',
       achievements: [
-        'Attended national-level entrepreneurship seminar',
-        'Gained insights on business development and startup ecosystem',
-        'Explored entrepreneurship opportunities in technology sector',
+        'Managed social communications and multimedia branding for informatics community',
+        'Collaborated across divisions to publish developer workshops and event materials',
       ],
     },
     {
-      type: 'experience',
-      title: 'IT SPECTA Event Division',
-      organization: 'IT SPECTA 2024 - "Big Dreamer Great Achiever"',
-      period: 'April - June 2024',
-      description: 'Participated as Event Division member for IT SPECTA 2024, coordinating event operations and participant engagement.',
+      type: 'organization',
+      title: 'Event Division Member',
+      organization: 'IT SPECTA 2024',
+      period: 'Apr 2024 – Jun 2024',
+      description: 'Coordinated operational flow and participant engagement for major annual IT gathering with 500+ participants.',
       achievements: [
-        'Coordinated with multiple divisions for event execution',
-        'Managed participant registration and engagement activities',
-        'Contributed to successful IT event with 500+ participants',
+        'Coordinated event execution and technical staging for 500+ attendees',
+        'Ensured seamless scheduling and speaker coordination across multiple IT sessions',
+      ],
+    },
+    {
+      type: 'organization',
+      title: 'MATAF Equipment Division',
+      organization: 'Prodi Teknologi Informasi UMY',
+      period: '2024',
+      description: 'Handled technical logistics, device infrastructure, and stage hardware setups.',
+      achievements: [
+        'Managed equipment workflows and technical sound/display setups',
+        'Ensured zero technical downtime during multi-session ceremonies',
       ],
     },
   ];
@@ -134,15 +116,24 @@ export function Experience() {
               <div key={idx} className="relative pl-20">
                 {/* Timeline Icon */}
                 <div
-                  className={`absolute left-0 w-16 h-16 rounded-full flex items-center justify-center ${item.type === 'education'
-                      ? 'bg-cyan-500/20 border-2 border-cyan-400'
-                      : 'bg-green-500/20 border-2 border-green-400'
-                    }`}
+                  className={`absolute left-0 w-16 h-16 rounded-full flex items-center justify-center ${
+                    item.type === 'work'
+                      ? 'bg-cyan-500/20 border-2 border-cyan-400 shadow-lg shadow-cyan-500/20'
+                      : item.type === 'education'
+                      ? 'bg-green-500/20 border-2 border-green-400 shadow-lg shadow-green-500/20'
+                      : item.type === 'organization'
+                      ? 'bg-indigo-500/20 border-2 border-indigo-400'
+                      : 'bg-emerald-500/20 border-2 border-emerald-400'
+                  }`}
                 >
-                  {item.type === 'education' ? (
-                    <GraduationCap className="w-8 h-8 text-cyan-400" />
+                  {item.type === 'work' ? (
+                    <Briefcase className="w-8 h-8 text-cyan-400" />
+                  ) : item.type === 'education' ? (
+                    <GraduationCap className="w-8 h-8 text-green-400" />
+                  ) : item.type === 'organization' ? (
+                    <Users className="w-8 h-8 text-indigo-400" />
                   ) : (
-                    <Briefcase className="w-8 h-8 text-green-400" />
+                    <Building2 className="w-8 h-8 text-emerald-400" />
                   )}
                 </div>
 

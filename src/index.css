@@ -2101,3 +2101,48 @@ html {
     transform: none;
   }
 }
+
+/* Print Styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  body {
+    background: white !important;
+    color: black !important;
+  }
+
+  section {
+    page-break-inside: avoid;
+    padding: 10mm 0 !important;
+    color: black !important;
+  }
+
+  h1, h2, h3, h4, h5, h6, p, span, div {
+    color: black !important;
+    text-shadow: none !important;
+  }
+
+  .bg-slate-900, .bg-slate-950, .bg-gradient-to-br, .bg-gradient-to-r {
+    background: none !important;
+    background-color: transparent !important;
+  }
+
+  .border-slate-800, .border-slate-700 {
+    border-color: #eee !important;
+  }
+
+  /* Ensure text is visible on white background */
+  .text-white, .text-gray-300, .text-gray-400 {
+    color: #333 !important;
+  }
+
+  .text-transparent {
+    background: none !important;
+    -webkit-background-clip: initial !important;
+    background-clip: initial !important;
+    color: black !important;
+    -webkit-text-fill-color: initial !important;
+  }
+}

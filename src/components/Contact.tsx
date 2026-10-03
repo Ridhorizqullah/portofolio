@@ -102,7 +102,7 @@ export function Contact() {
                   <Github className="w-6 h-6 text-white" />
                 </a>
                 <a
-                  href="https://www.linkedin.com/in/muhammad-ridho-rizqullah-5107852ba"
+                  href="https://www.linkedin.com/in/ridho-rizqullah-9677b53ab"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-12 h-12 bg-slate-700 hover:bg-cyan-500 rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-110"

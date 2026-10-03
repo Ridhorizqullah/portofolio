@@ -4,7 +4,7 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="py-12 px-4 bg-slate-950/80 border-t border-slate-800">
+    <footer className="py-12 px-4 bg-slate-950/80 border-t border-slate-800 no-print">
       <div className="max-w-6xl mx-auto">
         <div className="grid md:grid-cols-3 gap-8 mb-8">
           {/* Brand */}
@@ -71,7 +71,7 @@ export function Footer() {
                 <Github className="w-5 h-5 text-white" />
               </a>
               <a
-                href="https://www.linkedin.com/in/muhammad-ridho-rizqullah-5107852ba"
+                href="https://www.linkedin.com/in/ridho-rizqullah-9677b53ab"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 bg-slate-800 hover:bg-cyan-500 rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-110"
