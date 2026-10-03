@@ -1,4 +1,5 @@
 import { ExternalLink, Github } from 'lucide-react';
+import { Card3D } from './3d/Card3D';
 import presensiAppImage from '../assets/3cba048768d1a0458c63f067141013098314100f.png';
 import getkomUIImage from '../assets/b61ac32ecaa1cb9a264f5db79586c05f13d5cdad.png';
 import n8nTelegramBotImage from '../assets/141a9b6ef764dd05fbb012d7404335fcc3d4adfd.png';
@@ -109,69 +110,68 @@ export function Projects() {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((project, idx) => (
-            <div
-              key={idx}
-              className="bg-slate-900 border border-slate-800 hover:border-slate-700 transition-colors rounded-xl overflow-hidden flex flex-col justify-between"
-            >
-              <div>
-                {/* Project Image */}
-                <div className="relative h-48 bg-slate-950 overflow-hidden border-b border-slate-800/80">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
+            <Card3D key={idx} className="h-full rounded-xl">
+              <div className="bg-slate-900 border border-slate-800 hover:border-slate-700 transition-colors rounded-xl overflow-hidden flex flex-col justify-between h-full">
+                <div>
+                  {/* Project Image */}
+                  <div className="relative h-48 bg-slate-950 overflow-hidden border-b border-slate-800/80">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                    />
+                  </div>
 
-                {/* Content */}
-                <div className="p-5">
-                  <h3 className="text-lg font-semibold text-white mb-2">
-                    {project.title}
-                  </h3>
-                  <p className="text-slate-400 text-sm leading-relaxed mb-4">
-                    {project.description}
-                  </p>
+                  {/* Content */}
+                  <div className="p-5">
+                    <h3 className="text-lg font-semibold text-white mb-2">
+                      {project.title}
+                    </h3>
+                    <p className="text-slate-400 text-sm leading-relaxed mb-4">
+                      {project.description}
+                    </p>
 
-                  {/* Tech stack */}
-                  <div className="flex flex-wrap gap-1.5 mb-2">
-                    {project.techStack.map((tech, techIdx) => (
-                      <span
-                        key={techIdx}
-                        className="px-2 py-0.5 bg-slate-800 text-slate-300 text-xs rounded border border-slate-700/60 font-mono"
-                      >
-                        {tech}
-                      </span>
-                    ))}
+                    {/* Tech stack */}
+                    <div className="flex flex-wrap gap-1.5 mb-2">
+                      {project.techStack.map((tech, techIdx) => (
+                        <span
+                          key={techIdx}
+                          className="px-2 py-0.5 bg-slate-800 text-slate-300 text-xs rounded border border-slate-700/60 font-mono"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              {/* Actions */}
-              <div className="p-5 pt-0 flex gap-3">
-                {project.link && (
-                  <a
-                    href={project.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-cyan-600 hover:bg-cyan-500 text-white rounded-md text-xs font-medium transition-colors"
-                  >
-                    <span>{project.linkType === 'figma' ? 'View in Figma' : 'View Demo'}</span>
-                    <ExternalLink className="w-3.5 h-3.5" />
-                  </a>
-                )}
-                {project.githubLink && (
-                  <a
-                    href={project.githubLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 rounded-md text-xs font-medium transition-colors"
-                  >
-                    <Github className="w-3.5 h-3.5" />
-                    <span>Source Code</span>
-                  </a>
-                )}
+                {/* Actions */}
+                <div className="p-5 pt-0 flex gap-3">
+                  {project.link && (
+                    <a
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-cyan-600 hover:bg-cyan-500 text-white rounded-md text-xs font-medium transition-colors"
+                    >
+                      <span>{project.linkType === 'figma' ? 'View in Figma' : 'View Demo'}</span>
+                      <ExternalLink className="w-3.5 h-3.5" />
+                    </a>
+                  )}
+                  {project.githubLink && (
+                    <a
+                      href={project.githubLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 rounded-md text-xs font-medium transition-colors"
+                    >
+                      <Github className="w-3.5 h-3.5" />
+                      <span>Source Code</span>
+                    </a>
+                  )}
+                </div>
               </div>
-            </div>
+            </Card3D>
           ))}
         </div>
       </div>

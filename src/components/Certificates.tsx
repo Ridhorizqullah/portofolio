@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Award, X, FileText, Download, ExternalLink } from 'lucide-react';
+import { Card3D } from './3d/Card3D';
 import { ImageWithFallback } from './figma/ImageWithFallback';
 import certDeploymentDocker from '../assets/cert-deployment-docker.png';
 import certNSE from 'figma:asset/43050c05b7e4e58d5111ef08efa9a5d413b215d3.png';
@@ -106,34 +107,35 @@ export function Certificates() {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {certificates.map((cert, idx) => (
-            <div
-              key={idx}
-              onClick={() => setSelectedCert(cert)}
-              className="group bg-slate-900 border border-slate-800 hover:border-slate-700 transition-colors rounded-xl overflow-hidden cursor-pointer flex flex-col justify-between"
-            >
-              <div>
-                <div className="relative h-48 bg-slate-950 overflow-hidden border-b border-slate-800/80">
-                  <ImageWithFallback
-                    src={cert.image}
-                    alt={cert.title}
-                    className="w-full h-full object-cover"
-                  />
-                  {cert.pdfUrl && (
-                    <div className="absolute top-3 left-3 bg-slate-900/90 px-2.5 py-0.5 rounded text-cyan-400 text-xs font-mono border border-slate-700">
-                      PDF Document
-                    </div>
-                  )}
-                </div>
+            <Card3D key={idx} className="h-full rounded-xl">
+              <div
+                onClick={() => setSelectedCert(cert)}
+                className="group bg-slate-900 border border-slate-800 hover:border-slate-700 transition-colors rounded-xl overflow-hidden cursor-pointer flex flex-col justify-between h-full"
+              >
+                <div>
+                  <div className="relative h-48 bg-slate-950 overflow-hidden border-b border-slate-800/80">
+                    <ImageWithFallback
+                      src={cert.image}
+                      alt={cert.title}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    {cert.pdfUrl && (
+                      <div className="absolute top-3 left-3 bg-slate-900/90 px-2.5 py-0.5 rounded text-cyan-400 text-xs font-mono border border-slate-700">
+                        PDF Document
+                      </div>
+                    )}
+                  </div>
 
-                <div className="p-5">
-                  <h3 className="text-base font-semibold text-white mb-1.5 line-clamp-2">
-                    {cert.title}
-                  </h3>
-                  <p className="text-slate-300 text-xs mb-2">{cert.organization}</p>
-                  <p className="text-slate-500 text-xs font-mono">{cert.date}</p>
+                  <div className="p-5">
+                    <h3 className="text-base font-semibold text-white mb-1.5 line-clamp-2">
+                      {cert.title}
+                    </h3>
+                    <p className="text-slate-300 text-xs mb-2">{cert.organization}</p>
+                    <p className="text-slate-500 text-xs font-mono">{cert.date}</p>
+                  </div>
                 </div>
               </div>
-            </div>
+            </Card3D>
           ))}
         </div>
 
