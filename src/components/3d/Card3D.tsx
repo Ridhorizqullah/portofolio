@@ -1,4 +1,4 @@
-import React, { useRef, useState, ReactNode } from 'react';
+import { useRef, useState, type ReactNode, type CSSProperties, type MouseEvent } from 'react';
 
 interface Card3DProps {
   children: ReactNode;
@@ -14,13 +14,13 @@ export function Card3D({
   glare = true,
 }: Card3DProps) {
   const cardRef = useRef<HTMLDivElement>(null);
-  const [style, setStyle] = useState<React.CSSProperties>({
+  const [style, setStyle] = useState<CSSProperties>({
     transform: 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)',
     transition: 'transform 0.4s cubic-bezier(0.03, 0.98, 0.52, 0.99)',
   });
   const [glarePos, setGlarePos] = useState({ x: 50, y: 50, opacity: 0 });
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+  const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
     const card = cardRef.current;
     if (!card) return;
 
