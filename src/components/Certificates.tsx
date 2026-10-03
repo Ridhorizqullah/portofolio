@@ -93,15 +93,14 @@ export function Certificates() {
   ];
 
   return (
-    <section id="certificates" className="py-20 px-4 bg-slate-900">
+    <section id="certificates" className="py-20 px-4 border-b border-slate-800/80">
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="mb-4 text-white">
-            Certificates & <span className="bg-gradient-to-r from-cyan-400 to-green-400 bg-clip-text text-transparent">Achievements</span>
+        <div className="mb-12">
+          <h2 className="text-white text-2xl sm:text-3xl font-bold tracking-tight">
+            Certifications
           </h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-cyan-400 to-green-400 mx-auto mb-4"></div>
-          <p className="text-gray-400 max-w-2xl mx-auto">
-            Recognition and certifications from competitions, workshops, and organizational activities
+          <p className="text-slate-400 text-sm mt-1">
+            Official verified certifications, training programs, and competition records
           </p>
         </div>
 
@@ -110,32 +109,29 @@ export function Certificates() {
             <div
               key={idx}
               onClick={() => setSelectedCert(cert)}
-              className="group bg-slate-800/50 backdrop-blur-sm rounded-2xl border border-slate-700 hover:border-cyan-400 transition-all duration-300 shadow-xl hover:shadow-2xl overflow-hidden cursor-pointer"
+              className="group bg-slate-900 border border-slate-800 hover:border-slate-700 transition-colors rounded-xl overflow-hidden cursor-pointer flex flex-col justify-between"
             >
-              <div className="relative h-48 overflow-hidden">
-                <ImageWithFallback
-                  src={cert.image}
-                  alt={cert.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/50 to-transparent opacity-60"></div>
-                <div className="absolute top-4 right-4 bg-cyan-500/20 backdrop-blur-sm p-2 rounded-lg border border-cyan-400/50">
-                  <Award className="w-5 h-5 text-cyan-400" />
+              <div>
+                <div className="relative h-48 bg-slate-950 overflow-hidden border-b border-slate-800/80">
+                  <ImageWithFallback
+                    src={cert.image}
+                    alt={cert.title}
+                    className="w-full h-full object-cover"
+                  />
+                  {cert.pdfUrl && (
+                    <div className="absolute top-3 left-3 bg-slate-900/90 px-2.5 py-0.5 rounded text-cyan-400 text-xs font-mono border border-slate-700">
+                      PDF Document
+                    </div>
+                  )}
                 </div>
-                {cert.pdfUrl && (
-                  <div className="absolute top-4 left-4 bg-slate-900/80 backdrop-blur-sm px-2.5 py-1 rounded-full border border-cyan-400/40 text-cyan-300 text-xs flex items-center gap-1 font-medium">
-                    <FileText className="w-3.5 h-3.5 text-cyan-400" />
-                    <span>PDF Verified</span>
-                  </div>
-                )}
-              </div>
 
-              <div className="p-6">
-                <h3 className="text-lg text-white mb-2 line-clamp-2 group-hover:text-cyan-400 transition-colors">
-                  {cert.title}
-                </h3>
-                <p className="text-green-400 text-sm mb-2">{cert.organization}</p>
-                <p className="text-gray-400 text-xs">{cert.date}</p>
+                <div className="p-5">
+                  <h3 className="text-base font-semibold text-white mb-1.5 line-clamp-2">
+                    {cert.title}
+                  </h3>
+                  <p className="text-slate-300 text-xs mb-2">{cert.organization}</p>
+                  <p className="text-slate-500 text-xs font-mono">{cert.date}</p>
+                </div>
               </div>
             </div>
           ))}
@@ -148,62 +144,57 @@ export function Certificates() {
             onClick={() => setSelectedCert(null)}
           >
             <div
-              className="bg-slate-800 rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto border border-slate-700"
+              className="bg-slate-900 rounded-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto border border-slate-800 shadow-2xl"
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="relative">
+              <div className="relative border-b border-slate-800 bg-slate-950 p-2">
                 <ImageWithFallback
                   src={selectedCert.image}
                   alt={selectedCert.title}
-                  className="w-full h-72 object-contain bg-slate-900"
+                  className="w-full max-h-80 object-contain mx-auto"
                 />
                 <button
                   onClick={() => setSelectedCert(null)}
-                  className="absolute top-4 right-4 bg-slate-900/80 backdrop-blur-sm p-2 rounded-lg hover:bg-slate-900 transition-colors"
+                  className="absolute top-3 right-3 bg-slate-800/90 text-slate-300 hover:text-white p-1.5 rounded-lg border border-slate-700 transition-colors"
                 >
-                  <X className="w-6 h-6 text-white" />
+                  <X className="w-5 h-5" />
                 </button>
               </div>
 
-              <div className="p-8">
-                <div className="flex items-start gap-3 mb-4">
-                  <div className="p-3 bg-cyan-500/20 rounded-xl">
-                    <Award className="w-6 h-6 text-cyan-400" />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-2xl text-white mb-2">{selectedCert.title}</h3>
-                    <p className="text-green-400 mb-1">{selectedCert.organization}</p>
-                    <p className="text-gray-400 text-sm">{selectedCert.date}</p>
-                    {selectedCert.certificateNo && (
-                      <p className="text-cyan-400 text-xs mt-1 font-mono">
-                        No: {selectedCert.certificateNo}
-                      </p>
-                    )}
-                  </div>
+              <div className="p-6">
+                <div className="mb-4">
+                  <h3 className="text-xl font-bold text-white mb-1">{selectedCert.title}</h3>
+                  <p className="text-slate-300 text-sm">{selectedCert.organization}</p>
+                  <p className="text-slate-400 text-xs font-mono mt-0.5">{selectedCert.date}</p>
+                  {selectedCert.certificateNo && (
+                    <p className="text-cyan-400 text-xs font-mono mt-2">
+                      Credential ID: {selectedCert.certificateNo}
+                    </p>
+                  )}
                 </div>
 
-                <div className="border-t border-slate-700 pt-4 mb-6">
-                  <p className="text-gray-300 leading-relaxed">{selectedCert.description}</p>
+                <div className="border-t border-slate-800 pt-4 mb-6">
+                  <p className="text-slate-300 text-sm leading-relaxed">{selectedCert.description}</p>
                 </div>
 
                 {selectedCert.pdfUrl && (
-                  <div className="pt-2 flex flex-wrap gap-4">
+                  <div className="flex flex-wrap gap-3">
                     <a
                       href={selectedCert.pdfUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-cyan-500 to-green-500 hover:from-cyan-600 hover:to-green-600 text-white font-medium rounded-xl transition-all duration-300 shadow-lg shadow-cyan-500/20"
+                      className="inline-flex items-center gap-2 px-4 py-2 bg-cyan-600 hover:bg-cyan-500 text-white text-xs font-medium rounded-lg transition-colors"
                     >
-                      <FileText className="w-5 h-5" />
-                      <span>View Original PDF</span>
-                      <ExternalLink className="w-4 h-4" />
+                      <FileText className="w-4 h-4" />
+                      <span>View PDF</span>
+                      <ExternalLink className="w-3.5 h-3.5" />
                     </a>
                     <a
                       href={selectedCert.pdfUrl}
                       download="Sertifikat-UMY-2026-deployment-docker.pdf"
-                      className="inline-flex items-center gap-2 px-6 py-3 bg-slate-700/60 hover:bg-slate-700 text-gray-200 font-medium rounded-xl border border-slate-600 transition-all duration-300"
+                      className="inline-flex items-center gap-2 px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 text-xs font-medium rounded-lg transition-colors"
                     >
-                      <Download className="w-5 h-5 text-cyan-400" />
+                      <Download className="w-4 h-4" />
                       <span>Download PDF</span>
                     </a>
                   </div>

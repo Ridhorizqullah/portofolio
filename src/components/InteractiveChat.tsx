@@ -122,93 +122,75 @@ export function InteractiveChat() {
   };
 
   return (
-    <section id="contact" className="py-20 px-4 relative no-print">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="mb-4 text-white">
-            Get In <span className="bg-gradient-to-r from-cyan-400 to-green-400 bg-clip-text text-transparent">Touch</span>
+    <section id="contact" className="py-20 px-4 border-b border-slate-800/80 no-print">
+      <div className="max-w-5xl mx-auto">
+        <div className="mb-12">
+          <h2 className="text-white text-2xl sm:text-3xl font-bold tracking-tight">
+            Get In Touch
           </h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-cyan-400 to-green-400 mx-auto mb-4"></div>
-          <p className="text-gray-400 max-w-2xl mx-auto">
-            Join the conversation! Share your thoughts, ask questions, or just say hi! 💬
+          <p className="text-slate-400 text-sm mt-1">
+            Reach out for collaboration, opportunities, or leave a public comment
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-12">
+        <div className="grid md:grid-cols-2 gap-8">
           {/* Contact Information */}
-          <div className="space-y-8">
-            <div className="bg-slate-800/50 backdrop-blur-sm p-8 rounded-2xl border border-slate-700 shadow-xl">
-              <h3 className="text-2xl mb-6 text-white">Let's Connect</h3>
-              <p className="text-gray-400 mb-8 leading-relaxed">
-                I'm always open to discussing new projects, creative ideas, or opportunities
-                to be part of your visions. Let's create something amazing together!
-              </p>
+          <div className="space-y-6">
+            <div className="bg-slate-900 p-6 rounded-xl border border-slate-800 space-y-6">
+              <div>
+                <h3 className="text-lg font-semibold text-white mb-2">Contact Details</h3>
+                <p className="text-slate-400 text-sm leading-relaxed">
+                  Open to software engineering and AI internship discussions.
+                </p>
+              </div>
 
-              <div className="space-y-4">
+              <div className="space-y-3 text-sm">
                 <a
                   href="mailto:ridhorizqullah3@gmail.com"
-                  className="flex items-center gap-4 text-gray-300 hover:text-cyan-400 transition-colors"
+                  className="flex items-center gap-3 text-slate-300 hover:text-cyan-400 transition-colors p-2.5 rounded-lg hover:bg-slate-800/50"
                 >
-                  <div className="w-12 h-12 bg-cyan-500/20 rounded-lg flex items-center justify-center">
-                    <Mail className="w-6 h-6 text-cyan-400" />
-                  </div>
-                  <div>
-                    <div className="text-sm text-gray-500">Email</div>
-                    <div>ridhorizqullah3@gmail.com</div>
-                  </div>
+                  <Mail className="w-4 h-4 text-slate-400" />
+                  <span>ridhorizqullah3@gmail.com</span>
                 </a>
 
                 <a
                   href="tel:+6281249934103"
-                  className="flex items-center gap-4 text-gray-300 hover:text-green-400 transition-colors"
+                  className="flex items-center gap-3 text-slate-300 hover:text-cyan-400 transition-colors p-2.5 rounded-lg hover:bg-slate-800/50"
                 >
-                  <div className="w-12 h-12 bg-green-500/20 rounded-lg flex items-center justify-center">
-                    <Phone className="w-6 h-6 text-green-400" />
-                  </div>
-                  <div>
-                    <div className="text-sm text-gray-500">Phone</div>
-                    <div>+62 812-4993-4103</div>
-                  </div>
+                  <Phone className="w-4 h-4 text-slate-400" />
+                  <span>+62 812-4993-4103</span>
                 </a>
 
-                <div className="flex items-center gap-4 text-gray-300 hover:text-cyan-400 transition-colors">
-                  <div className="w-12 h-12 bg-cyan-500/20 rounded-lg flex items-center justify-center">
-                    <MapPin className="w-6 h-6 text-cyan-400" />
-                  </div>
-                  <div>
-                    <div className="text-sm text-gray-500">Location</div>
-                    <div>Yogyakarta, Indonesia</div>
-                  </div>
+                <div className="flex items-center gap-3 text-slate-300 p-2.5">
+                  <MapPin className="w-4 h-4 text-slate-400" />
+                  <span>Yogyakarta, Indonesia</span>
                 </div>
               </div>
-            </div>
 
-            {/* Social Links */}
-            <div className="bg-slate-800/50 backdrop-blur-sm p-8 rounded-2xl border border-slate-700 shadow-xl">
-              <h3 className="text-xl mb-6 text-white">Follow Me</h3>
-              <div className="flex gap-4">
-                <a
-                  href="https://github.com/Ridhorizqullah"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-12 h-12 bg-slate-700 hover:bg-cyan-500 rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-110"
-                >
-                  <Github className="w-6 h-6 text-white" />
-                </a>
-                <a
-                  href="https://www.linkedin.com/in/ridho-rizqullah-9677b53ab"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-12 h-12 bg-slate-700 hover:bg-cyan-500 rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-110"
-                >
-                  <Linkedin className="w-6 h-6 text-white" />
-                </a>
-                <a
-                  href="mailto:ridhorizqullah3@gmail.com"
-                  className="w-12 h-12 bg-slate-700 hover:bg-green-500 rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-110"
-                >
-                  <Mail className="w-6 h-6 text-white" />
-                </a>
+              <div className="border-t border-slate-800 pt-5">
+                <div className="text-xs font-mono text-slate-400 uppercase tracking-wider mb-3">
+                  Online Profiles
+                </div>
+                <div className="flex gap-2">
+                  <a
+                    href="https://github.com/Ridhorizqullah"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-3.5 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white rounded-md text-xs font-medium border border-slate-700 transition-colors flex items-center gap-1.5"
+                  >
+                    <Github className="w-3.5 h-3.5" />
+                    <span>GitHub</span>
+                  </a>
+                  <a
+                    href="https://www.linkedin.com/in/ridho-rizqullah-9677b53ab"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-3.5 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white rounded-md text-xs font-medium border border-slate-700 transition-colors flex items-center gap-1.5"
+                  >
+                    <Linkedin className="w-3.5 h-3.5" />
+                    <span>LinkedIn</span>
+                  </a>
+                </div>
               </div>
             </div>
           </div>
@@ -216,19 +198,16 @@ export function InteractiveChat() {
           {/* Interactive Comments Section */}
           <div className="space-y-6">
             {/* Post New Comment */}
-            <div className="bg-slate-800/50 backdrop-blur-sm p-8 rounded-2xl border border-slate-700 shadow-xl">
-              <div className="flex items-center gap-3 mb-6">
-                <MessageCircle className="w-6 h-6 text-cyan-400" />
-                <h3 className="text-2xl text-white">Leave a Comment</h3>
-              </div>
-              <form onSubmit={handleSubmit} className="space-y-4">
+            <div className="bg-slate-900 p-6 rounded-xl border border-slate-800">
+              <h3 className="text-base font-semibold text-white mb-4">Leave a Comment</h3>
+              <form onSubmit={handleSubmit} className="space-y-3">
                 <div>
                   <input
                     type="text"
                     value={newComment.name}
                     onChange={(e) => setNewComment({ ...newComment, name: e.target.value })}
                     required
-                    className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-cyan-400 transition-colors"
+                    className="w-full px-3.5 py-2 bg-slate-950 border border-slate-800 rounded-lg text-white text-sm placeholder-slate-500 focus:outline-none focus:border-slate-600 transition-colors"
                     placeholder="Your name"
                   />
                 </div>
@@ -238,15 +217,15 @@ export function InteractiveChat() {
                     onChange={(e) => setNewComment({ ...newComment, message: e.target.value })}
                     required
                     rows={3}
-                    className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-cyan-400 transition-colors resize-none"
-                    placeholder="Share your thoughts..."
+                    className="w-full px-3.5 py-2 bg-slate-950 border border-slate-800 rounded-lg text-white text-sm placeholder-slate-500 focus:outline-none focus:border-slate-600 transition-colors resize-none"
+                    placeholder="Share your message or question..."
                   />
                 </div>
                 <button
                   type="submit"
-                  className="w-full px-6 py-3 bg-gradient-to-r from-cyan-500 to-green-500 hover:from-cyan-600 hover:to-green-600 text-white rounded-lg transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-cyan-500/30"
+                  className="px-4 py-2 bg-cyan-600 hover:bg-cyan-500 text-white rounded-lg text-xs font-medium transition-colors flex items-center gap-1.5"
                 >
-                  <Send className="w-5 h-5" />
+                  <Send className="w-3.5 h-3.5" />
                   <span>Post Comment</span>
                 </button>
               </form>

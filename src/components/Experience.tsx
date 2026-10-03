@@ -1,9 +1,7 @@
-import { GraduationCap, Briefcase, Calendar, Building2, Users } from 'lucide-react';
-
 export function Experience() {
   const timeline = [
     {
-      type: 'work',
+      type: 'Work Experience',
       title: 'Junior Backend Developer Intern',
       organization: 'Ministry of Industry, Republic of Indonesia',
       period: 'Apr 2026 – Jun 2026',
@@ -15,7 +13,7 @@ export function Experience() {
       ],
     },
     {
-      type: 'education',
+      type: 'Education',
       title: 'S1 Informatics (Bachelor of Computer Science)',
       organization: 'Universitas Muhammadiyah Yogyakarta',
       period: '2023 – Present',
@@ -27,7 +25,7 @@ export function Experience() {
       ],
     },
     {
-      type: 'certification',
+      type: 'Certification',
       title: 'Samsung Innovation Campus Batch 6: AI in Everyday Life',
       organization: 'Samsung & Hacktiv8 Indonesia',
       period: 'Jan 2025',
@@ -38,7 +36,7 @@ export function Experience() {
       ],
     },
     {
-      type: 'experience',
+      type: 'Competition',
       title: 'Participant, UINIC 7.0 National UI/UX Design Competition',
       organization: 'UIN Sunan Kalijaga',
       period: 'Dec 2024',
@@ -49,7 +47,7 @@ export function Experience() {
       ],
     },
     {
-      type: 'certification',
+      type: 'Workshop',
       title: 'AI Cloud Class: How is AI Changing The World',
       organization: 'MSI x Tirto.id',
       period: 'Nov 2024',
@@ -60,7 +58,7 @@ export function Experience() {
       ],
     },
     {
-      type: 'organization',
+      type: 'Organization',
       title: 'Media & Promotion Division (MEDPRO)',
       organization: 'Keluarga Mahasiswa Teknologi Informasi (KMTI) UMY',
       period: '2024 – 2025',
@@ -71,7 +69,7 @@ export function Experience() {
       ],
     },
     {
-      type: 'organization',
+      type: 'Organization',
       title: 'Event Division Member',
       organization: 'IT SPECTA 2024',
       period: 'Apr 2024 – Jun 2024',
@@ -82,7 +80,7 @@ export function Experience() {
       ],
     },
     {
-      type: 'organization',
+      type: 'Organization',
       title: 'MATAF Equipment Division',
       organization: 'Prodi Teknologi Informasi UMY',
       period: '2024',
@@ -95,78 +93,59 @@ export function Experience() {
   ];
 
   return (
-    <section id="experience" className="py-20 px-4 bg-slate-900/50">
+    <section id="experience" className="py-20 px-4 border-b border-slate-800/80">
       <div className="max-w-4xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="mb-4 text-white">
-            Experience & <span className="bg-gradient-to-r from-cyan-400 to-green-400 bg-clip-text text-transparent">Education</span>
+        <div className="mb-12">
+          <h2 className="text-white text-2xl sm:text-3xl font-bold tracking-tight">
+            Experience & Education
           </h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-cyan-400 to-green-400 mx-auto mb-4"></div>
-          <p className="text-gray-400 max-w-2xl mx-auto">
-            My journey through education and professional development
+          <p className="text-slate-400 text-sm mt-1">
+            Work experience, academic background, and organizational activities
           </p>
         </div>
 
-        <div className="relative">
-          {/* Timeline Line */}
-          <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-cyan-400 via-green-400 to-cyan-400"></div>
+        <div className="relative border-l border-slate-800 ml-3 sm:ml-4 space-y-10 pl-6 sm:pl-8">
+          {timeline.map((item, idx) => (
+            <div key={idx} className="relative">
+              {/* Minimal dot node instead of big flashy icon circle */}
+              <div className="absolute -left-[31px] sm:-left-[39px] top-1.5 w-3 h-3 rounded-full bg-slate-900 border-2 border-slate-600"></div>
 
-          <div className="space-y-12">
-            {timeline.map((item, idx) => (
-              <div key={idx} className="relative pl-20">
-                {/* Timeline Icon */}
-                <div
-                  className={`absolute left-0 w-16 h-16 rounded-full flex items-center justify-center ${
-                    item.type === 'work'
-                      ? 'bg-cyan-500/20 border-2 border-cyan-400 shadow-lg shadow-cyan-500/20'
-                      : item.type === 'education'
-                      ? 'bg-green-500/20 border-2 border-green-400 shadow-lg shadow-green-500/20'
-                      : item.type === 'organization'
-                      ? 'bg-indigo-500/20 border-2 border-indigo-400'
-                      : 'bg-emerald-500/20 border-2 border-emerald-400'
-                  }`}
-                >
-                  {item.type === 'work' ? (
-                    <Briefcase className="w-8 h-8 text-cyan-400" />
-                  ) : item.type === 'education' ? (
-                    <GraduationCap className="w-8 h-8 text-green-400" />
-                  ) : item.type === 'organization' ? (
-                    <Users className="w-8 h-8 text-indigo-400" />
-                  ) : (
-                    <Building2 className="w-8 h-8 text-emerald-400" />
-                  )}
-                </div>
-
-                {/* Content Card */}
-                <div className="bg-slate-800/50 backdrop-blur-sm p-6 rounded-2xl border border-slate-700 hover:border-slate-600 transition-all duration-300 shadow-xl">
-                  <div className="flex items-start justify-between mb-3 flex-wrap gap-2">
-                    <h3 className="text-xl text-white">{item.title}</h3>
-                    <div className="flex items-center gap-2 text-cyan-400 text-sm">
-                      <Calendar className="w-4 h-4" />
-                      {item.period}
-                    </div>
+              <div className="bg-slate-900/60 p-6 rounded-xl border border-slate-800 hover:border-slate-700 transition-colors">
+                <div className="flex items-start justify-between mb-2 flex-wrap gap-2">
+                  <div>
+                    <span className="text-xs font-mono text-cyan-400 uppercase tracking-wider block mb-1">
+                      {item.type}
+                    </span>
+                    <h3 className="text-lg font-semibold text-white">
+                      {item.title}
+                    </h3>
                   </div>
-
-                  <div className="text-green-400 mb-3">{item.organization}</div>
-
-                  <p className="text-gray-400 mb-4 leading-relaxed">
-                    {item.description}
-                  </p>
-
-                  {item.achievements && (
-                    <ul className="space-y-2">
-                      {item.achievements.map((achievement, achIdx) => (
-                        <li key={achIdx} className="flex items-start gap-2 text-gray-300 text-sm">
-                          <span className="text-cyan-400 mt-1">▹</span>
-                          <span>{achievement}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  )}
+                  <span className="text-xs font-mono text-slate-400 bg-slate-800 px-2.5 py-1 rounded border border-slate-700/60">
+                    {item.period}
+                  </span>
                 </div>
+
+                <div className="text-slate-300 text-sm font-medium mb-3">
+                  {item.organization}
+                </div>
+
+                <p className="text-slate-400 text-sm mb-4 leading-relaxed">
+                  {item.description}
+                </p>
+
+                {item.achievements && (
+                  <ul className="space-y-1.5">
+                    {item.achievements.map((achievement, achIdx) => (
+                      <li key={achIdx} className="flex items-start gap-2 text-slate-400 text-sm">
+                        <span className="text-slate-600 mt-0.5">•</span>
+                        <span>{achievement}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>
