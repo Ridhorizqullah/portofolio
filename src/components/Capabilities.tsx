@@ -43,10 +43,7 @@ export function Capabilities() {
         {/* Section Header */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-white/[0.08] pb-6">
           <div>
-            <span className="text-xs font-mono uppercase tracking-widest text-[#38BDF8]">
-              02 // Services &amp; Capabilities
-            </span>
-            <h2 className="text-white text-3xl sm:text-4xl font-bold tracking-tight mt-1">
+            <h2 className="text-white text-3xl sm:text-4xl font-bold tracking-tight">
               What I Build
             </h2>
           </div>

@@ -1,5 +1,5 @@
 import { useState, type FormEvent, type ChangeEvent } from 'react';
-import { Mail, Phone, MapPin, Send, CheckCircle2, AlertCircle, Loader2, Github, Linkedin } from 'lucide-react';
+import { Phone, CheckCircle2, AlertCircle, Loader2, Github, Linkedin } from 'lucide-react';
 
 export function Contact() {
   const [formData, setFormData] = useState({
@@ -32,15 +32,9 @@ export function Contact() {
       return;
     }
 
-    if (!formData.subject.trim()) {
+    if (!formData.message.trim() || formData.message.trim().length < 5) {
       setStatus('error');
-      setErrorMessage('Please enter a subject.');
-      return;
-    }
-
-    if (!formData.message.trim() || formData.message.trim().length < 10) {
-      setStatus('error');
-      setErrorMessage('Message must be at least 10 characters long.');
+      setErrorMessage('Please enter a message (at least 5 characters).');
       return;
     }
 
@@ -57,7 +51,7 @@ export function Contact() {
         subject: '',
         message: '',
       });
-    }, 1200);
+    }, 1000);
   };
 
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -70,229 +64,191 @@ export function Contact() {
 
   return (
     <section id="contact" className="scroll-mt-20 py-24 sm:py-28 border-b border-white/[0.08] bg-[#0A0F14] relative">
-      <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 space-y-14">
-        {/* Section Header */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-white/[0.08] pb-6">
-          <div>
-            <span className="text-xs font-mono uppercase tracking-widest text-[#38BDF8]">
-              07 // Connect &amp; Collaborate
-            </span>
-            <h2 className="text-white text-3xl sm:text-5xl font-bold tracking-tight mt-1">
-              Let&apos;s Build <br className="hidden sm:inline" />
-              <span className="gradient-text-ocean">
-                Something.
-              </span>
-            </h2>
-          </div>
-          <p className="text-slate-400 text-sm font-mono max-w-sm">
-            Have an idea, project, or opportunity? Let&apos;s talk and build reliable systems together.
-          </p>
+      <div className="max-w-6xl mx-auto px-5 sm:px-8 lg:px-12 space-y-12">
+        {/* Section Header with Dashed Divider */}
+        <div className="contact-dashed-divider max-w-4xl mx-auto">
+          <h2 className="text-white text-3xl sm:text-4xl font-bold tracking-tight px-6 text-center whitespace-nowrap">
+            Contact Us
+          </h2>
         </div>
 
-        {/* 2-Column Split: Direct Channels & Interactive Form */}
-        <div className="grid lg:grid-cols-12 gap-10 lg:gap-14 items-start">
-          {/* Left: Contact Channels */}
-          <div className="lg:col-span-5 space-y-6">
-            <div className="p-8 rounded-2xl bg-[#0E1620] border border-white/[0.08] space-y-6 shadow-xl">
-              <div>
-                <h3 className="text-xl font-bold text-white mb-2">Direct Contact</h3>
-                <p className="text-sm text-slate-400 leading-relaxed">
-                  I am available for software engineering roles, full-stack web/mobile development, backend architecture, and AI integrations.
-                </p>
-              </div>
-
-              <div className="space-y-4 pt-2">
-                {/* Email */}
-                <a
-                  href="mailto:ridhorizqullah3@gmail.com"
-                  className="flex items-center gap-4 p-3.5 rounded-xl bg-[#0A0F14] hover:bg-[#131E2B] border border-white/[0.06] hover:border-[#0EA5E9]/40 transition-all group"
-                >
-                  <div className="p-2.5 rounded-lg bg-[#0E1620] text-[#38BDF8] group-hover:scale-110 transition-transform">
-                    <Mail className="w-5 h-5" />
+        {/* 2-Column Reference Layout */}
+        <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto items-stretch">
+          {/* Left Panel: Contact Form */}
+          <div className="contact-reference-panel flex flex-col justify-between">
+            <form onSubmit={handleSubmit} className="space-y-3.5 flex flex-col h-full justify-between" noValidate>
+              <div className="space-y-3.5">
+                {status === 'success' && (
+                  <div className="p-3 rounded-lg bg-[#0369A1]/20 border border-[#0EA5E9]/40 flex items-center gap-2.5 animate-in fade-in duration-300">
+                    <CheckCircle2 className="w-4 h-4 text-[#38BDF8] shrink-0" />
+                    <span className="text-xs text-slate-200 font-mono">
+                      Message sent successfully! I will reply shortly.
+                    </span>
                   </div>
-                  <div className="min-w-0">
-                    <div className="text-[10px] font-mono uppercase tracking-wider text-slate-500">EMAIL</div>
-                    <div className="text-sm text-slate-200 group-hover:text-white truncate font-mono">
-                      ridhorizqullah3@gmail.com
-                    </div>
-                  </div>
-                </a>
+                )}
 
-                {/* Phone / WhatsApp */}
-                <a
-                  href="https://wa.me/6281249934103"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-4 p-3.5 rounded-xl bg-[#0A0F14] hover:bg-[#131E2B] border border-white/[0.06] hover:border-[#0EA5E9]/40 transition-all group"
-                >
-                  <div className="p-2.5 rounded-lg bg-[#0E1620] text-[#38BDF8] group-hover:scale-110 transition-transform">
-                    <Phone className="w-5 h-5" />
+                {status === 'error' && (
+                  <div className="p-3 rounded-lg bg-red-500/10 border border-red-500/30 flex items-center gap-2.5 animate-in fade-in duration-300">
+                    <AlertCircle className="w-4 h-4 text-red-400 shrink-0" />
+                    <span className="text-xs text-red-300 font-mono">{errorMessage}</span>
                   </div>
-                  <div className="min-w-0">
-                    <div className="text-[10px] font-mono uppercase tracking-wider text-slate-500">PHONE / WHATSAPP</div>
-                    <div className="text-sm text-slate-200 group-hover:text-white truncate font-mono">
-                      +62 812-4993-4103
-                    </div>
-                  </div>
-                </a>
+                )}
 
-                {/* Location */}
-                <div className="flex items-center gap-4 p-3.5 rounded-xl bg-[#0A0F14] border border-white/[0.06]">
-                  <div className="p-2.5 rounded-lg bg-[#0E1620] text-[#38BDF8]">
-                    <MapPin className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <div className="text-[10px] font-mono uppercase tracking-wider text-slate-500">LOCATION</div>
-                    <div className="text-sm text-slate-300 font-mono">
-                      Yogyakarta, Indonesia
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Social Profiles */}
-              <div className="pt-4 border-t border-white/[0.06] flex items-center justify-between">
-                <span className="text-xs font-mono text-slate-500">PROFILES:</span>
-                <div className="flex items-center gap-2">
-                  <a
-                    href="https://github.com/Ridhorizqullah"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#0A0F14] hover:bg-[#131E2B] text-slate-300 hover:text-white border border-white/[0.06] hover:border-[#0EA5E9]/30 text-xs font-mono transition-colors"
-                  >
-                    <Github className="w-3.5 h-3.5" />
-                    <span>GitHub</span>
-                  </a>
-                  <a
-                    href="https://linkedin.com/in/ridho-rizqullah-9677b53ab"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#0A0F14] hover:bg-[#131E2B] text-slate-300 hover:text-white border border-white/[0.06] hover:border-[#0EA5E9]/30 text-xs font-mono transition-colors"
-                  >
-                    <Linkedin className="w-3.5 h-3.5" />
-                    <span>LinkedIn</span>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Right: Interactive Contact Form */}
-          <div className="lg:col-span-7">
-            <div className="p-8 rounded-2xl bg-[#0E1620] border border-white/[0.08] shadow-xl space-y-6">
-              <div>
-                <h3 className="text-xl font-bold text-white mb-1">Send a Message</h3>
-                <p className="text-sm text-slate-400">
-                  Fill out the form below and I&apos;ll get back to you as soon as possible.
-                </p>
-              </div>
-
-              {status === 'success' && (
-                <div className="p-4 rounded-xl bg-[#0369A1]/20 border border-[#0EA5E9]/40 flex items-start gap-3 animate-in fade-in duration-300">
-                  <CheckCircle2 className="w-5 h-5 text-[#38BDF8] shrink-0 mt-0.5" />
-                  <div className="space-y-1">
-                    <div className="text-sm font-bold text-white">Message dispatched successfully!</div>
-                    <div className="text-xs text-slate-300">
-                      Thank you for reaching out. I will respond to your email promptly.
-                    </div>
-                  </div>
-                </div>
-              )}
-
-              {status === 'error' && (
-                <div className="p-4 rounded-xl bg-red-500/10 border border-red-500/30 flex items-start gap-3 animate-in fade-in duration-300">
-                  <AlertCircle className="w-5 h-5 text-red-400 shrink-0 mt-0.5" />
-                  <div className="text-xs text-red-300 font-mono">{errorMessage}</div>
-                </div>
-              )}
-
-              <form onSubmit={handleSubmit} className="space-y-5" noValidate>
-                <div className="grid sm:grid-cols-2 gap-5">
-                  <div className="space-y-1.5">
-                    <label htmlFor="name" className="block text-xs font-mono text-slate-300">
-                      Your Name <span className="text-[#38BDF8]">*</span>
-                    </label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      autoComplete="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      placeholder="e.g. John Doe"
-                      required
-                      className="w-full px-4 py-3 rounded-xl bg-[#0A0F14] border border-white/[0.08] focus:border-[#0EA5E9] focus:ring-1 focus:ring-[#0EA5E9] text-sm text-white placeholder-slate-600 transition-all outline-none"
-                    />
-                  </div>
-
-                  <div className="space-y-1.5">
-                    <label htmlFor="email" className="block text-xs font-mono text-slate-300">
-                      Email Address <span className="text-[#38BDF8]">*</span>
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      autoComplete="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      placeholder="e.g. john@example.com"
-                      required
-                      className="w-full px-4 py-3 rounded-xl bg-[#0A0F14] border border-white/[0.08] focus:border-[#0EA5E9] focus:ring-1 focus:ring-[#0EA5E9] text-sm text-white placeholder-slate-600 transition-all outline-none"
-                    />
-                  </div>
+                {/* Name */}
+                <div className="contact-input-row">
+                  <span className="contact-input-label">Name</span>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    autoComplete="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    placeholder="Your name"
+                    required
+                    className="contact-input-field"
+                  />
                 </div>
 
-                <div className="space-y-1.5">
-                  <label htmlFor="subject" className="block text-xs font-mono text-slate-300">
-                    Subject <span className="text-[#38BDF8]">*</span>
-                  </label>
+                {/* E-mail */}
+                <div className="contact-input-row">
+                  <span className="contact-input-label">E-mail</span>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    autoComplete="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    placeholder="your.email@example.com"
+                    required
+                    className="contact-input-field"
+                  />
+                </div>
+
+                {/* Website URL / Subject */}
+                <div className="contact-input-row">
+                  <span className="contact-input-label">Website URL</span>
                   <input
                     type="text"
                     id="subject"
                     name="subject"
                     value={formData.subject}
                     onChange={handleChange}
-                    placeholder="e.g. Internship Opportunity / Web Project"
-                    required
-                    className="w-full px-4 py-3 rounded-xl bg-[#0A0F14] border border-white/[0.08] focus:border-[#0EA5E9] focus:ring-1 focus:ring-[#0EA5E9] text-sm text-white placeholder-slate-600 transition-all outline-none"
+                    placeholder="https://yourwebsite.com or Subject"
+                    className="contact-input-field"
                   />
                 </div>
 
-                <div className="space-y-1.5">
-                  <label htmlFor="message" className="block text-xs font-mono text-slate-300">
-                    Message <span className="text-[#38BDF8]">*</span>
-                  </label>
+                {/* Your Message */}
+                <div className="contact-input-row items-start">
+                  <span className="contact-input-label pt-2.5">Your Message</span>
                   <textarea
                     id="message"
                     name="message"
                     rows={4}
                     value={formData.message}
                     onChange={handleChange}
-                    placeholder="Tell me about your project, idea, or role..."
+                    placeholder="Write your message here..."
                     required
-                    className="w-full px-4 py-3 rounded-xl bg-[#0A0F14] border border-white/[0.08] focus:border-[#0EA5E9] focus:ring-1 focus:ring-[#0EA5E9] text-sm text-white placeholder-slate-600 transition-all outline-none resize-none"
+                    className="contact-input-field resize-none min-h-[95px]"
                   />
                 </div>
+              </div>
 
+              {/* Submit Button aligned right */}
+              <div className="flex justify-end pt-3">
                 <button
                   type="submit"
                   disabled={status === 'loading'}
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-[#0369A1] hover:bg-[#0EA5E9] disabled:opacity-60 text-white rounded-xl text-sm font-mono font-medium transition-all shadow-[0_0_20px_rgba(3,105,161,0.35)] hover:shadow-[0_0_25px_rgba(14,165,233,0.5)] cursor-pointer"
+                  className="contact-send-btn"
                 >
                   {status === 'loading' ? (
                     <>
-                      <Loader2 className="w-4 h-4 animate-spin text-white" />
-                      <span>Sending Message...</span>
+                      <Loader2 className="w-3.5 h-3.5 animate-spin text-white" />
+                      <span>SENDING</span>
                     </>
                   ) : (
-                    <>
-                      <Send className="w-4 h-4" />
-                      <span>Send Message</span>
-                    </>
+                    <span>SEND</span>
                   )}
                 </button>
-              </form>
+              </div>
+            </form>
+          </div>
+
+          {/* Right Panel: Contact Info & Socials */}
+          <div className="contact-reference-panel flex flex-row items-center justify-between gap-6 sm:gap-8">
+            {/* Left Sub-column: Vertical Stack of Circular Social Icons */}
+            <div className="flex flex-col gap-4 pr-6 sm:pr-8 border-r border-dashed border-white/15 justify-center items-center shrink-0">
+              <a
+                href="https://linkedin.com/in/ridho-rizqullah-9677b53ab"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="contact-social-circle"
+                aria-label="LinkedIn Profile"
+                title="LinkedIn"
+              >
+                <Linkedin className="w-5 h-5" />
+              </a>
+
+              <a
+                href="https://github.com/Ridhorizqullah"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="contact-social-circle"
+                aria-label="GitHub Profile"
+                title="GitHub"
+              >
+                <Github className="w-5 h-5" />
+              </a>
+
+              <a
+                href="https://wa.me/6281249934103"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="contact-social-circle"
+                aria-label="WhatsApp"
+                title="WhatsApp / Phone"
+              >
+                <Phone className="w-5 h-5" />
+              </a>
+            </div>
+
+            {/* Right Sub-column: Direct Contact Details */}
+            <div className="flex flex-col justify-center space-y-4 pl-1 sm:pl-2 min-w-0 flex-1">
+              <div>
+                <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight leading-snug">
+                  Muhammad Ridho Rizqullah
+                </h3>
+                <div className="text-xs font-mono text-[#38BDF8] mt-1">
+                  Creative Developer &bull; Software Engineer
+                </div>
+              </div>
+
+              <div className="space-y-2 text-sm sm:text-base font-mono">
+                <div>
+                  <a
+                    href="tel:+6281249934103"
+                    className="text-slate-300 hover:text-white transition-colors"
+                  >
+                    +62 812.4993.4103
+                  </a>
+                </div>
+
+                <div>
+                  <a
+                    href="mailto:ridhorizqullah3@gmail.com"
+                    className="text-white hover:text-[#38BDF8] font-medium transition-colors break-all"
+                  >
+                    ridhorizqullah3@gmail.com
+                  </a>
+                </div>
+              </div>
+
+              <div className="text-xs sm:text-sm text-slate-400 font-mono leading-relaxed pt-1">
+                <div>Yogyakarta, DIY</div>
+                <div>Indonesia</div>
+              </div>
             </div>
           </div>
         </div>

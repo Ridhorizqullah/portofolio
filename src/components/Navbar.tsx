@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Github, Linkedin, Menu, X, FileDown } from 'lucide-react';
+import { Github, Linkedin, Menu, X, FileDown, Phone } from 'lucide-react';
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -81,8 +81,16 @@ export function Navbar() {
           })}
         </nav>
 
-        {/* Right: Social Icons + Resume Button */}
-        <div className="hidden md:flex items-center gap-2 flex-shrink-0">
+        {/* Right: Phone Contact + Social Icons + Resume Button */}
+        <div className="hidden md:flex items-center gap-3 flex-shrink-0">
+          <a
+            href="tel:+6281249934103"
+            className="hidden xl:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#0E1620]/60 border border-white/[0.08] hover:border-[#F59E0B]/50 text-xs font-mono text-slate-300 hover:text-white transition-all shadow-sm"
+          >
+            <Phone className="w-3.5 h-3.5 text-[#F59E0B]" />
+            <span>+62 812.4993.4103</span>
+          </a>
+
           <a
             href="https://github.com/Ridhorizqullah"
             target="_blank"
@@ -103,7 +111,7 @@ export function Navbar() {
           </a>
           <button
             onClick={handlePrintResume}
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-mono text-slate-200 bg-[#0E1620] hover:bg-[#131E2B] border border-white/[0.1] hover:border-[#0EA5E9]/40 rounded-lg transition-all shadow-sm cursor-pointer ml-1"
+            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-mono text-slate-200 bg-[#0E1620] hover:bg-[#131E2B] border border-white/[0.1] hover:border-[#0EA5E9]/40 rounded-lg transition-all shadow-sm cursor-pointer ml-1"
           >
             <FileDown className="w-3.5 h-3.5 text-[#38BDF8]" />
             <span>Resume</span>

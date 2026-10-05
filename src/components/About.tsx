@@ -44,12 +44,9 @@ export function About() {
         {/* Section Heading */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-white/[0.08] pb-6 mb-12 lg:mb-16">
           <div>
-            <span className="text-xs font-mono uppercase tracking-widest text-[#38BDF8]">
-              01 // Profile &amp; Story
-            </span>
-            <h2 className="text-white text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mt-2">
+            <h1 className="text-white text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mt-2">
               About Me
-            </h2>
+            </h1>
           </div>
           <p className="text-slate-400 text-sm font-mono max-w-sm sm:text-right leading-relaxed">
             Bridging software engineering, robust backend systems, and modern creative technology.
@@ -153,19 +150,14 @@ export function About() {
           </div>
         </div>
 
-        {/* =================================================== */}
-        {/* 02. CORE CAPABILITIES (FULL-WIDTH 3-COLUMN GRID)   */}
-        {/* =================================================== */}
+      
         <div id="capabilities" className="scroll-mt-24 mt-20 sm:mt-24 pt-16 sm:pt-20 border-t border-white/[0.08]">
           {/* Capabilities Header */}
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-8 mb-4">
             <div>
-              <span className="text-xs font-mono uppercase tracking-widest text-[#38BDF8]">
-                02 // Core Capabilities
-              </span>
-              <h3 className="text-white text-2xl sm:text-3xl font-bold tracking-tight mt-1.5">
+              <h2 className="text-white text-2xl sm:text-3xl font-bold tracking-tight">
                 Engineering Disciplines
-              </h3>
+              </h2>
             </div>
             <p className="text-slate-400 text-sm font-mono max-w-sm sm:text-right leading-relaxed">
               Core technical disciplines applied across production, internship, and capstone software builds.

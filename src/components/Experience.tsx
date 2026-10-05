@@ -124,9 +124,6 @@ export function Experience() {
       <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 space-y-14">
         {/* Section Header - Centered */}
         <div className="text-center max-w-2xl mx-auto space-y-3 pb-8 border-b border-white/[0.08]">
-          <span className="text-xs font-mono uppercase tracking-widest text-[#38BDF8]">
-            05 // Trajectory &amp; Growth
-          </span>
           <h2 className="text-white text-3xl sm:text-4xl font-bold tracking-tight">
             Experience &amp; Journey
           </h2>

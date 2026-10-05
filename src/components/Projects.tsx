@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ExternalLink, Github, Sparkles, ArrowUpRight } from 'lucide-react';
+import { ExternalLink, Github, Sparkles, ArrowUpRight, Eye, X } from 'lucide-react';
 import { Card3D } from './3d/Card3D';
 
 import presensiAppImage from '../assets/3cba048768d1a0458c63f067141013098314100f.png';
@@ -31,6 +31,7 @@ interface Project {
 
 export function Projects() {
   const [activeCategory, setActiveCategory] = useState<ProjectCategory>('ALL');
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   const projects: Project[] = [
     {
@@ -154,213 +155,274 @@ export function Projects() {
       ? projects
       : projects.filter((p) => p.categories.includes(activeCategory));
 
-  // Determine if featured project should be shown as flagship
-  const featuredProject = projects.find((p) => p.featured);
-  const showFeaturedAsFlagship =
-    activeCategory === 'ALL' || (featuredProject && featuredProject.categories.includes(activeCategory));
-  const gridProjects = showFeaturedAsFlagship
-    ? filteredProjects.filter((p) => !p.featured)
-    : filteredProjects;
-
   return (
     <section id="projects" className="scroll-mt-20 py-24 sm:py-28 border-b border-white/[0.08] bg-[#0A0F14]">
-      <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 space-y-12">
-        {/* Section Header with Category Tabs */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-white/[0.08] pb-6">
-          <div>
-            <span className="text-xs font-mono uppercase tracking-widest text-[#38BDF8]">
-              03 // Portfolio Showcase
-            </span>
-            <h2 className="text-white text-3xl sm:text-4xl font-bold tracking-tight mt-1.5">
-              Selected Work
-            </h2>
-            <p className="text-slate-400 text-sm mt-1 max-w-lg">
-              A curated collection of verified software, mobile, AI, Web3, and interface design systems.
-            </p>
-          </div>
+      <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 space-y-10">
+        {/* Section Header - Centered */}
+        <div className="text-center max-w-2xl mx-auto space-y-3 pb-6 border-b border-white/[0.08]">
+          <h2 className="text-white text-3xl sm:text-4xl font-bold tracking-tight">
+            Selected Work
+          </h2>
+          <p className="text-slate-400 text-sm font-mono leading-relaxed max-w-lg mx-auto">
+            A curated collection of verified software, mobile, AI, Web3, and interface design systems.
+          </p>
+        </div>
 
-          {/* Functional Category Filters */}
-          <div className="flex flex-wrap gap-1.5 p-1 rounded-xl bg-[#0E1620] border border-white/[0.08] self-start md:self-auto">
+        {/* Dynamic Category Filter Pills - Centered Capsule Bar */}
+        <div className="flex flex-col items-center justify-center gap-3.5">
+          <div className="portfolio-filter-container">
             {filterTabs.map((tab) => {
               const isActive = activeCategory === tab;
               return (
                 <button
                   key={tab}
+                  type="button"
                   onClick={() => setActiveCategory(tab)}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-mono transition-all duration-200 cursor-pointer ${
-                    isActive
-                      ? 'bg-[#0369A1] text-white font-semibold shadow-[0_0_12px_rgba(3,105,161,0.5)] border border-[#0EA5E9]/50'
-                      : 'text-slate-400 hover:text-white hover:bg-white/[0.04]'
-                  }`}
+                  className={`portfolio-filter-tab ${isActive ? 'active' : ''}`}
                 >
                   {tab}
                 </button>
               );
             })}
           </div>
+
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#0E1620] border border-white/[0.06] text-xs font-mono text-slate-400 shadow-sm">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#38BDF8] animate-pulse" />
+            <span>
+              Showing <strong className="text-white font-semibold">{filteredProjects.length}</strong> {filteredProjects.length === 1 ? 'project' : 'projects'} in <span className="text-[#38BDF8] font-semibold">{activeCategory}</span>
+            </span>
+          </div>
         </div>
 
-        {/* 1. Large Featured Flagship Project Card */}
-        {showFeaturedAsFlagship && featuredProject && (
-          <div className="mb-12">
-            <Card3D className="rounded-3xl">
-              <div className="rounded-3xl bg-[#0E1620] border border-white/[0.08] hover:border-[#0EA5E9]/40 transition-all duration-500 overflow-hidden shadow-2xl group">
-                <div className="grid lg:grid-cols-12 gap-0 items-center">
-                  {/* Flagship Image */}
-                  <div className="lg:col-span-7 relative h-72 sm:h-96 lg:h-full min-h-[320px] bg-[#0A0F14] overflow-hidden">
-                    <img
-                      src={featuredProject.image}
-                      alt={featuredProject.title}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-103"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0E1620] via-transparent to-transparent opacity-60 lg:hidden" />
-                    <div className="absolute top-4 left-4 z-10">
-                      <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#0A0F14]/90 backdrop-blur-md text-[11px] font-mono text-[#38BDF8] border border-[#0EA5E9]/30 shadow-md">
-                        <Sparkles className="w-3 h-3 text-[#38BDF8]" />
-                        <span>FEATURED FLAGSHIP</span>
-                      </span>
-                    </div>
-                  </div>
+        {/* Project Cards Grid - Compact, Balanced, Centered */}
+        <div className="portfolio-cards-grid">
+          {filteredProjects.map((project) => (
+            <div key={project.id} className="portfolio-card-item">
+              <Card3D className="w-full h-full rounded-2xl flex flex-col">
+                <div className="w-full h-full bg-[#0E1620] border border-white/[0.08] hover:border-[#0EA5E9]/40 transition-all duration-300 rounded-2xl overflow-hidden flex flex-col justify-between group shadow-lg">
+                  <div>
+                    {/* Image container - Compact 150px height with smooth hover zoom */}
+                    <div
+                      onClick={() => setSelectedProject(project)}
+                      className="portfolio-card-img-wrapper cursor-pointer group/img"
+                    >
+                      <img
+                        src={project.image}
+                        alt={project.title}
+                        className="portfolio-card-img group-hover/img:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#0E1620] via-transparent to-transparent opacity-60" />
 
-                  {/* Flagship Content */}
-                  <div className="lg:col-span-5 p-7 sm:p-10 space-y-6 flex flex-col justify-between">
-                    <div className="space-y-4">
-                      <div className="flex items-center justify-between text-xs font-mono text-slate-500">
-                        <span>PROJECT {featuredProject.number}</span>
-                        <div className="flex items-center gap-2">
-                          {featuredProject.categories.map((c) => (
-                            <span key={c} className="text-[#38BDF8] bg-[#0A0F14] border border-white/[0.08] px-2.5 py-0.5 rounded text-[11px]">
-                              {c}
+                      {/* Top badges */}
+                      <div className="absolute top-2.5 left-2.5 right-2.5 flex items-center justify-between gap-1.5 pointer-events-none">
+                        <div className="flex items-center gap-1.5">
+                          <span className="px-2 py-0.5 rounded text-[10px] font-mono bg-[#0A0F14]/90 backdrop-blur-md text-slate-300 border border-white/[0.08]">
+                            {project.number}
+                          </span>
+                          {project.featured && (
+                            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-mono bg-[#0369A1]/90 backdrop-blur-md text-white border border-[#0EA5E9]/50 shadow-sm">
+                              <Sparkles className="w-2.5 h-2.5 text-[#38BDF8]" />
+                              <span>Featured</span>
+                            </span>
+                          )}
+                        </div>
+
+                        <div className="flex flex-wrap gap-1">
+                          {project.categories.map((cat) => (
+                            <span
+                              key={cat}
+                              className="px-2 py-0.5 rounded text-[10px] font-mono bg-[#0A0F14]/90 backdrop-blur-md text-[#38BDF8] border border-[#0EA5E9]/30"
+                            >
+                              {cat}
                             </span>
                           ))}
                         </div>
                       </div>
 
-                      <h3 className="text-2xl sm:text-3xl font-bold text-white group-hover:text-[#38BDF8] transition-colors leading-tight">
-                        {featuredProject.title}
-                      </h3>
+                      {/* Hover quick preview button overlay */}
+                      <div className="absolute inset-0 bg-[#0369A1]/20 opacity-0 group-hover/img:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-xs">
+                        <span className="px-3 py-1.5 rounded-lg bg-[#0A0F14]/90 text-white text-xs font-mono flex items-center gap-1.5 border border-white/[0.1] shadow-lg">
+                          <Eye className="w-3.5 h-3.5 text-[#38BDF8]" />
+                          <span>Quick Preview</span>
+                        </span>
+                      </div>
+                    </div>
 
-                      <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
-                        {featuredProject.description}
+                    {/* Body Content */}
+                    <div className="p-5 space-y-2.5">
+                      <h3
+                        onClick={() => setSelectedProject(project)}
+                        className="text-base font-bold text-white group-hover:text-[#38BDF8] transition-colors leading-snug cursor-pointer line-clamp-1"
+                        title={project.title}
+                      >
+                        {project.title}
+                      </h3>
+                      <p className="text-slate-400 text-xs leading-relaxed line-clamp-2 min-h-[2.5rem]">
+                        {project.description}
                       </p>
 
-                      {/* Tech stack */}
-                      <div className="flex flex-wrap gap-2 pt-2">
-                        {featuredProject.techStack.map((tech, idx) => (
+                      {/* Tech Badges */}
+                      <div className="flex flex-wrap gap-1.5 pt-1">
+                        {project.techStack.slice(0, 3).map((tech, idx) => (
                           <span
                             key={idx}
-                            className="tech-tag"
+                            className="px-2 py-0.5 rounded text-[10px] font-mono bg-[#0A0F14] text-slate-300 border border-white/[0.06]"
                           >
                             {tech}
                           </span>
                         ))}
-                      </div>
-                    </div>
-
-                    {/* Actions */}
-                    <div className="pt-6 border-t border-white/[0.08] flex items-center gap-3">
-                      {featuredProject.githubLink && (
-                        <a
-                          href={featuredProject.githubLink}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#0369A1] hover:bg-[#0EA5E9] text-white rounded-xl text-xs font-mono font-medium transition-all shadow-md hover:shadow-[0_0_20px_rgba(14,165,233,0.4)] cursor-pointer"
-                        >
-                          <Github className="w-4 h-4" />
-                          <span>Source Code</span>
-                          <ArrowUpRight className="w-3.5 h-3.5 opacity-80" />
-                        </a>
-                      )}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </Card3D>
-          </div>
-        )}
-
-        {/* 2. Responsive 2-Column / Editorial Grid for Remaining Projects */}
-        <div className="grid md:grid-cols-2 gap-7">
-          {gridProjects.map((project) => (
-            <Card3D key={project.id} className="h-full rounded-2xl">
-              <div className="h-full bg-[#0E1620] border border-white/[0.08] hover:border-[#0EA5E9]/40 transition-all duration-300 rounded-2xl overflow-hidden flex flex-col justify-between group shadow-lg">
-                <div>
-                  {/* Image container */}
-                  <div className="relative h-52 bg-[#0A0F14] overflow-hidden border-b border-white/[0.06]">
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-103"
-                    />
-                    <div className="absolute top-3 left-3 flex items-center gap-2">
-                      <span className="px-2.5 py-0.5 rounded text-[11px] font-mono bg-[#0A0F14]/90 backdrop-blur-md text-slate-300 border border-white/[0.08]">
-                        {project.number}
-                      </span>
-                      <div className="flex gap-1">
-                        {project.categories.map((cat) => (
-                          <span
-                            key={cat}
-                            className="px-2 py-0.5 rounded text-[10px] font-mono bg-[#0A0F14] text-[#38BDF8] border border-white/[0.06]"
-                          >
-                            {cat}
+                        {project.techStack.length > 3 && (
+                          <span className="px-1.5 py-0.5 rounded text-[10px] font-mono bg-[#0A0F14] text-slate-500 border border-white/[0.06]">
+                            +{project.techStack.length - 3}
                           </span>
-                        ))}
+                        )}
                       </div>
                     </div>
                   </div>
 
-                  {/* Body */}
-                  <div className="p-6 space-y-3">
-                    <h3 className="text-lg font-bold text-white group-hover:text-[#38BDF8] transition-colors leading-snug">
-                      {project.title}
-                    </h3>
-                    <p className="text-slate-400 text-xs sm:text-sm leading-relaxed">
-                      {project.description}
-                    </p>
-
-                    {/* Tech Badges */}
-                    <div className="flex flex-wrap gap-2 pt-2">
-                      {project.techStack.map((tech, idx) => (
-                        <span
-                          key={idx}
-                          className="tech-tag"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
+                  {/* Card Footer Actions */}
+                  <div className="p-5 pt-0 flex items-center gap-2 border-t border-white/[0.04] mt-2 pt-3">
+                    {project.link && (
+                      <a
+                        href={project.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-1.5 bg-[#0369A1] hover:bg-[#0EA5E9] text-white rounded-lg text-xs font-mono font-medium transition-colors cursor-pointer"
+                      >
+                        <span>{project.linkType === 'figma' ? 'Figma' : 'Live Demo'}</span>
+                        <ArrowUpRight className="w-3 h-3" />
+                      </a>
+                    )}
+                    {project.githubLink && (
+                      <a
+                        href={project.githubLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-1.5 bg-[#0A0F14] hover:bg-white/[0.06] text-slate-200 border border-white/[0.08] hover:border-white/[0.15] rounded-lg text-xs font-mono font-medium transition-colors cursor-pointer"
+                      >
+                        <Github className="w-3.5 h-3.5 text-slate-400" />
+                        <span>Source</span>
+                      </a>
+                    )}
+                    <button
+                      type="button"
+                      onClick={() => setSelectedProject(project)}
+                      className="p-1.5 bg-[#0A0F14] hover:bg-white/[0.06] text-slate-400 hover:text-[#38BDF8] border border-white/[0.08] rounded-lg transition-colors cursor-pointer"
+                      title="View Details"
+                      aria-label="View Details"
+                    >
+                      <Eye className="w-3.5 h-3.5" />
+                    </button>
                   </div>
                 </div>
-
-                {/* Card Footer Actions */}
-                <div className="p-6 pt-0 flex gap-3">
-                  {project.link && (
-                    <a
-                      href={project.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 px-4 py-2 bg-[#0369A1] hover:bg-[#0EA5E9] text-white rounded-lg text-xs font-mono font-medium transition-colors cursor-pointer"
-                    >
-                      <span>{project.linkType === 'figma' ? 'View in Figma' : 'View Demo'}</span>
-                      <ExternalLink className="w-3.5 h-3.5" />
-                    </a>
-                  )}
-                  {project.githubLink && (
-                    <a
-                      href={project.githubLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 px-4 py-2 bg-[#0A0F14] hover:bg-white/[0.06] text-slate-200 border border-white/[0.08] hover:border-white/[0.15] rounded-lg text-xs font-mono font-medium transition-colors cursor-pointer"
-                    >
-                      <Github className="w-3.5 h-3.5 text-slate-400" />
-                      <span>Source</span>
-                    </a>
-                  )}
-                </div>
-              </div>
-            </Card3D>
+              </Card3D>
+            </div>
           ))}
         </div>
+
+        {/* Fullscreen Details Modal */}
+        {selectedProject && (
+          <div
+            className="fixed inset-0 bg-black/85 backdrop-blur-md z-50 flex items-center justify-center p-4 animate-in fade-in duration-200"
+            onClick={() => setSelectedProject(null)}
+          >
+            <div
+              className="bg-[#0E1620] rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto border border-white/[0.1] shadow-2xl space-y-6"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="relative border-b border-white/[0.08] bg-[#0A0F14] p-2 sm:p-4 flex items-center justify-center">
+                <img
+                  src={selectedProject.image}
+                  alt={selectedProject.title}
+                  className="w-full max-h-80 object-cover rounded-xl"
+                />
+                <button
+                  type="button"
+                  onClick={() => setSelectedProject(null)}
+                  className="absolute top-4 right-4 bg-[#0E1620]/90 text-slate-400 hover:text-white p-2 rounded-lg border border-white/[0.1] transition-colors cursor-pointer"
+                  aria-label="Close modal"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+
+              <div className="p-6 pt-0 space-y-4">
+                <div className="flex items-center justify-between gap-2">
+                  <span className="text-xs font-mono text-[#38BDF8]">
+                    PROJECT {selectedProject.number}
+                  </span>
+                  <div className="flex gap-1.5">
+                    {selectedProject.categories.map((c) => (
+                      <span
+                        key={c}
+                        className="px-2.5 py-0.5 rounded text-xs font-mono bg-[#0A0F14] text-[#38BDF8] border border-[#0EA5E9]/30"
+                      >
+                        {c}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <h3 className="text-xl sm:text-2xl font-bold text-white">
+                  {selectedProject.title}
+                </h3>
+
+                <p className="text-slate-300 text-sm leading-relaxed">
+                  {selectedProject.description}
+                </p>
+
+                <div>
+                  <div className="text-xs font-mono text-slate-500 uppercase tracking-wider mb-2">
+                    Technologies &amp; Architecture
+                  </div>
+                  <div className="flex flex-wrap gap-2">
+                    {selectedProject.techStack.map((tech, idx) => (
+                      <span
+                        key={idx}
+                        className="px-2.5 py-1 rounded-lg text-xs font-mono bg-[#0A0F14] text-slate-200 border border-white/[0.08]"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="flex flex-wrap gap-3 pt-4 border-t border-white/[0.08]">
+                  {selectedProject.link && (
+                    <a
+                      href={selectedProject.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#0369A1] hover:bg-[#0EA5E9] text-white rounded-xl text-xs font-mono font-medium transition-all shadow-md cursor-pointer"
+                    >
+                      <span>{selectedProject.linkType === 'figma' ? 'Open in Figma' : 'Live Preview'}</span>
+                      <ExternalLink className="w-4 h-4" />
+                    </a>
+                  )}
+                  {selectedProject.githubLink && (
+                    <a
+                      href={selectedProject.githubLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#0A0F14] hover:bg-white/[0.06] text-white border border-white/[0.1] rounded-xl text-xs font-mono font-medium transition-all cursor-pointer"
+                    >
+                      <Github className="w-4 h-4 text-[#38BDF8]" />
+                      <span>View GitHub Repository</span>
+                      <ArrowUpRight className="w-3.5 h-3.5 opacity-70" />
+                    </a>
+                  )}
+                  <button
+                    type="button"
+                    onClick={() => setSelectedProject(null)}
+                    className="ml-auto px-4 py-2 text-xs font-mono text-slate-400 hover:text-white transition-colors cursor-pointer"
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );

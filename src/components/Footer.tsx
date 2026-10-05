@@ -1,4 +1,4 @@
-import { Github, Linkedin, Mail, ArrowUp } from 'lucide-react';
+import { ChevronUp } from 'lucide-react';
 
 export function Footer() {
   const scrollToTop = () => {
@@ -6,63 +6,34 @@ export function Footer() {
   };
 
   return (
-    <footer className="py-16 bg-[#0A0F14] border-t border-white/[0.08] text-slate-400 no-print">
-      <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 space-y-8">
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
-          {/* Brand & Positioning */}
-          <div className="text-center sm:text-left space-y-1">
-            <div className="flex items-center justify-center sm:justify-start gap-2">
-              <span className="w-2 h-2 rounded-full bg-[#0EA5E9]"></span>
-              <span className="text-base font-bold text-white tracking-tight">MRR.DEV</span>
-            </div>
-            <p className="text-xs font-mono text-slate-400">
-              Creative Developer &bull; Software Developer
-            </p>
-          </div>
-
-          {/* Social Profiles */}
-          <div className="flex items-center gap-4">
-            <a
-              href="https://github.com/Ridhorizqullah"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2.5 rounded-lg bg-[#0E1620] hover:bg-[#131E2B] text-slate-300 hover:text-white border border-white/[0.06] hover:border-[#0EA5E9]/40 transition-colors"
-              aria-label="GitHub Profile"
-            >
-              <Github className="w-4 h-4" />
-            </a>
-            <a
-              href="https://linkedin.com/in/ridho-rizqullah-9677b53ab"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2.5 rounded-lg bg-[#0E1620] hover:bg-[#131E2B] text-slate-300 hover:text-white border border-white/[0.06] hover:border-[#0EA5E9]/40 transition-colors"
-              aria-label="LinkedIn Profile"
-            >
-              <Linkedin className="w-4 h-4" />
-            </a>
-            <a
-              href="mailto:ridhorizqullah3@gmail.com"
-              className="p-2.5 rounded-lg bg-[#0E1620] hover:bg-[#131E2B] text-slate-300 hover:text-white border border-white/[0.06] hover:border-[#0EA5E9]/40 transition-colors"
-              aria-label="Send Email"
-            >
-              <Mail className="w-4 h-4" />
-            </a>
-            <button
-              onClick={scrollToTop}
-              className="p-2.5 rounded-lg bg-[#0E1620] hover:bg-[#131E2B] text-slate-300 hover:text-[#38BDF8] border border-white/[0.06] hover:border-[#0EA5E9]/40 transition-colors cursor-pointer"
-              aria-label="Back to top"
-              title="Back to top"
-            >
-              <ArrowUp className="w-4 h-4" />
-            </button>
-          </div>
+    <footer className="py-14 bg-[#080C10] border-t border-white/[0.06] text-slate-400 no-print relative">
+      <div className="max-w-5xl mx-auto px-5 sm:px-8 space-y-6">
+        {/* Brand with Dashed Divider matching reference */}
+        <div className="contact-dashed-divider max-w-4xl mx-auto">
+          <span className="text-xl sm:text-2xl font-bold text-white tracking-tight px-6 text-center whitespace-nowrap">
+          </span>
         </div>
 
-        {/* Bottom Copyright & Location */}
-        <div className="pt-6 border-t border-white/[0.06] flex flex-col sm:flex-row items-center justify-between gap-3 text-xs font-mono text-slate-400 text-center sm:text-left">
-          <span>&copy; {new Date().getFullYear()} Muhammad Ridho Rizqullah. All rights reserved.</span>
-          <span>Engineered with React, TypeScript &amp; Three.js &bull; Yogyakarta, ID</span>
+        {/* Copyright & Location */}
+        <div className="text-center space-y-1 text-xs font-mono text-slate-500">
+          <div>&copy; {new Date().getFullYear()} Muhammad Ridho Rizqullah. All Rights Reserved.</div>
+          <div className="text-[11px] text-slate-600">Engineered with React, TypeScript &bull; Yogyakarta, Indonesia</div>
         </div>
+      </div>
+
+      {/* Floating / Corner TOP Button matching reference */}
+      <div className="absolute right-5 sm:right-8 bottom-8">
+        <button
+          onClick={scrollToTop}
+          className="flex flex-col items-center justify-center w-11 h-11 rounded-lg bg-[#0E1620] hover:bg-[#131E2B] border border-white/15 hover:border-[#0EA5E9] text-slate-300 hover:text-white transition-all shadow-lg group cursor-pointer"
+          aria-label="Scroll to Top"
+          title="Back to Top"
+        >
+          <ChevronUp className="w-4 h-4 text-[#38BDF8] group-hover:-translate-y-0.5 transition-transform" />
+          <span className="text-[9px] font-mono font-bold tracking-wider uppercase text-slate-400 group-hover:text-white">
+            TOP
+          </span>
+        </button>
       </div>
     </footer>
   );
