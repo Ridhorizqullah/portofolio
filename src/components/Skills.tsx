@@ -116,16 +116,16 @@ export function Skills() {
   ];
 
   return (
-    <section id="skills" className="scroll-mt-20 py-24 sm:py-28 border-b border-white/[0.08] bg-[#0A0F14]">
+    <section id="skills" className="portfolio-section-spacing border-b border-white/[0.08] bg-[#0A0F14]">
       <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 space-y-12">
         {/* Section Header */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-white/[0.08] pb-6">
+        <div className="section-header-row">
           <div>
-            <h2 className="text-white text-3xl sm:text-4xl font-bold tracking-tight">
+            <h2 className="section-header-title">
               Technology Stack
             </h2>
           </div>
-          <p className="text-slate-400 text-sm font-mono max-w-xs">
+          <p className="section-header-caption">
             Verified technologies applied across production and academic systems.
           </p>
         </div>

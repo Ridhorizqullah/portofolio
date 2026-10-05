@@ -2479,6 +2479,27 @@ html, body, #root {
   box-shadow: 0 0 18px rgba(14, 165, 233, 0.45);
 }
 
+.portfolio-filter-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  border-radius: 9999px;
+  font-size: 10px;
+  font-weight: 700;
+  margin-left: 6px;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #94A3B8;
+  transition: all 0.2s ease;
+}
+
+.portfolio-filter-tab.active .portfolio-filter-count {
+  background-color: rgba(255, 255, 255, 0.25);
+  color: #FFFFFF;
+}
+
 .portfolio-cards-grid {
   display: flex;
   flex-wrap: wrap;
@@ -2763,51 +2784,121 @@ html, body, #root {
   }
 }
 
-/* Luxurious Section Spacing & Generous Breathing Room */
+/* Balanced Section Spacing & Comfortable Breathing Room */
 .portfolio-section-spacing {
-  padding-top: 140px !important;
-  padding-bottom: 140px !important;
-  scroll-margin-top: 100px !important;
+  padding-top: 64px !important;
+  padding-bottom: 64px !important;
+  scroll-margin-top: 80px !important;
 }
 
 @media (min-width: 768px) {
   .portfolio-section-spacing {
-    padding-top: 180px !important;
-    padding-bottom: 180px !important;
-    scroll-margin-top: 110px !important;
+    padding-top: 84px !important;
+    padding-bottom: 84px !important;
+    scroll-margin-top: 90px !important;
   }
 }
 
 @media (min-width: 1280px) {
   .portfolio-section-spacing {
-    padding-top: 220px !important;
-    padding-bottom: 220px !important;
-    scroll-margin-top: 120px !important;
+    padding-top: 96px !important;
+    padding-bottom: 96px !important;
+    scroll-margin-top: 100px !important;
   }
 }
 
 /* Subsection Divider Spacing (e.g. #capabilities) */
 .portfolio-subsection-spacing {
-  margin-top: 140px !important;
-  padding-top: 110px !important;
-  scroll-margin-top: 100px !important;
+  margin-top: 60px !important;
+  padding-top: 50px !important;
+  scroll-margin-top: 80px !important;
 }
 
 @media (min-width: 768px) {
   .portfolio-subsection-spacing {
-    margin-top: 170px !important;
-    padding-top: 130px !important;
-    scroll-margin-top: 110px !important;
+    margin-top: 72px !important;
+    padding-top: 60px !important;
+    scroll-margin-top: 90px !important;
   }
 }
 
 @media (min-width: 1280px) {
   .portfolio-subsection-spacing {
-    margin-top: 200px !important;
-    padding-top: 150px !important;
-    scroll-margin-top: 120px !important;
+    margin-top: 84px !important;
+    padding-top: 70px !important;
+    scroll-margin-top: 100px !important;
   }
 }
+
+/* Grid & Column Utilities */
+@media (min-width: 1024px) {
+  .lg\:grid-cols-12 {
+    display: grid !important;
+    grid-template-columns: repeat(12, minmax(0, 1fr)) !important;
+  }
+  .lg\:col-span-7 {
+    grid-column: span 7 / span 7 !important;
+  }
+  .lg\:col-span-5 {
+    grid-column: span 5 / span 5 !important;
+  }
+}
+
+/* Unified Section Header Architecture */
+.section-header-row {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 24px;
+  margin-bottom: 36px;
+}
+
+@media (min-width: 640px) {
+  .section-header-row {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 44px;
+  }
+}
+
+.section-header-title {
+  color: #FFFFFF;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  margin: 0;
+  line-height: 1.15;
+}
+
+@media (min-width: 640px) {
+  .section-header-title {
+    font-size: 2.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-header-title {
+    font-size: 3rem;
+  }
+}
+
+.section-header-caption {
+  color: #94A3B8;
+  font-size: 0.875rem;
+  font-family: var(--font-mono, monospace);
+  line-height: 1.6;
+  max-width: 26rem;
+  margin: 0;
+}
+
+@media (min-width: 640px) {
+  .section-header-caption {
+    text-align: right;
+  }
+}
+
 
 
 

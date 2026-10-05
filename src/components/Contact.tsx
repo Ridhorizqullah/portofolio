@@ -63,13 +63,18 @@ export function Contact() {
   };
 
   return (
-    <section id="contact" className="scroll-mt-20 py-24 sm:py-28 border-b border-white/[0.08] bg-[#0A0F14] relative">
-      <div className="max-w-6xl mx-auto px-5 sm:px-8 lg:px-12 space-y-12">
-        {/* Section Header with Dashed Divider */}
-        <div className="contact-dashed-divider max-w-4xl mx-auto">
-          <h2 className="text-white text-3xl sm:text-4xl font-bold tracking-tight px-6 text-center whitespace-nowrap">
-            Contact Us
-          </h2>
+    <section id="contact" className="portfolio-section-spacing border-b border-white/[0.08] bg-[#0A0F14] relative">
+      <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 space-y-12">
+        {/* Section Header */}
+        <div className="section-header-row">
+          <div>
+            <h2 className="section-header-title">
+              Contact
+            </h2>
+          </div>
+          <p className="section-header-caption">
+            Open for software engineering opportunities, internships, and collaborative builds.
+          </p>
         </div>
 
         {/* 2-Column Reference Layout */}

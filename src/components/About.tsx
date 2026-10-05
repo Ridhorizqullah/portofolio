@@ -27,7 +27,7 @@ export function About() {
   ];
 
   return (
-    <section id="about" className="pt-20 sm:pt-28 pb-28 sm:pb-36 border-b border-white/[0.08] bg-[#0A0F14] relative">
+    <section id="about" className="portfolio-section-spacing border-b border-white/[0.08] bg-[#0A0F14] relative">
       {/* Subtle Ambient Ocean Lighting */}
       <div
         className="absolute top-1/4 right-0 w-96 h-96 rounded-full pointer-events-none blur-3xl opacity-20 -z-10"
@@ -37,18 +37,14 @@ export function About() {
       />
 
       <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
-        {/* =================================================== */}
-        {/* 01. EDITORIAL PROFILE & STORY                       */}
-        {/* =================================================== */}
-
         {/* Section Heading */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-white/[0.08] pb-6 mb-12 lg:mb-16">
+        <div className="section-header-row">
           <div>
-            <h1 className="text-white text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mt-2">
+            <h1 className="section-header-title">
               About Me
             </h1>
           </div>
-          <p className="text-slate-400 text-sm font-mono max-w-sm sm:text-right leading-relaxed">
+          <p className="section-header-caption">
             Bridging software engineering, robust backend systems, and modern creative technology.
           </p>
         </div>
@@ -151,15 +147,15 @@ export function About() {
         </div>
 
       
-        <div id="capabilities" className="scroll-mt-24 mt-20 sm:mt-24 pt-16 sm:pt-20 border-t border-white/[0.08]">
+        <div id="capabilities" className="portfolio-subsection-spacing border-t border-white/[0.08]">
           {/* Capabilities Header */}
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-8 mb-4">
+          <div className="section-header-row">
             <div>
-              <h2 className="text-white text-2xl sm:text-3xl font-bold tracking-tight">
+              <h2 className="section-header-title">
                 Engineering Disciplines
               </h2>
             </div>
-            <p className="text-slate-400 text-sm font-mono max-w-sm sm:text-right leading-relaxed">
+            <p className="section-header-caption">
               Core technical disciplines applied across production, internship, and capstone software builds.
             </p>
           </div>

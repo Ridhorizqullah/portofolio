@@ -156,14 +156,16 @@ export function Projects() {
       : projects.filter((p) => p.categories.includes(activeCategory));
 
   return (
-    <section id="projects" className="scroll-mt-20 py-24 sm:py-28 border-b border-white/[0.08] bg-[#0A0F14]">
+    <section id="projects" className="portfolio-section-spacing border-b border-white/[0.08] bg-[#0A0F14]">
       <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 space-y-10">
-        {/* Section Header - Centered */}
-        <div className="text-center max-w-2xl mx-auto space-y-3 pb-6 border-b border-white/[0.08]">
-          <h2 className="text-white text-3xl sm:text-4xl font-bold tracking-tight">
-            Selected Work
-          </h2>
-          <p className="text-slate-400 text-sm font-mono leading-relaxed max-w-lg mx-auto">
+        {/* Section Header */}
+        <div className="section-header-row">
+          <div>
+            <h2 className="section-header-title">
+              Selected Work
+            </h2>
+          </div>
+          <p className="section-header-caption">
             A curated collection of verified software, mobile, AI, Web3, and interface design systems.
           </p>
         </div>
@@ -173,6 +175,11 @@ export function Projects() {
           <div className="portfolio-filter-container">
             {filterTabs.map((tab) => {
               const isActive = activeCategory === tab;
+              const count =
+                tab === 'ALL'
+                  ? projects.length
+                  : projects.filter((p) => p.categories.includes(tab)).length;
+
               return (
                 <button
                   key={tab}
@@ -180,7 +187,10 @@ export function Projects() {
                   onClick={() => setActiveCategory(tab)}
                   className={`portfolio-filter-tab ${isActive ? 'active' : ''}`}
                 >
-                  {tab}
+                  <span>{tab}</span>
+                  <span className={`portfolio-filter-count ${isActive ? 'active' : ''}`}>
+                    {count}
+                  </span>
                 </button>
               );
             })}
@@ -195,7 +205,7 @@ export function Projects() {
         </div>
 
         {/* Project Cards Grid - Compact, Balanced, Centered */}
-        <div className="portfolio-cards-grid">
+        <div key={activeCategory} className="portfolio-cards-grid animate-in fade-in duration-300">
           {filteredProjects.map((project) => (
             <div key={project.id} className="portfolio-card-item">
               <Card3D className="w-full h-full rounded-2xl flex flex-col">

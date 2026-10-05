@@ -14,8 +14,8 @@ export function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-[92vh] sm:min-h-screen flex items-center justify-center border-b border-white/[0.08] overflow-hidden"
-      style={{ paddingTop: '80px', paddingBottom: '80px' }}
+      className="relative min-h-[90vh] sm:min-h-screen flex items-center justify-center border-b border-white/[0.08] overflow-hidden"
+      style={{ paddingTop: '70px', paddingBottom: '70px' }}
     >
       {/* 1. Dramatic Mountain Landscape with Cinematic Vignette Overlays */}
       <div className="absolute inset-0 z-0 pointer-events-none">
@@ -24,10 +24,8 @@ export function Hero() {
           alt="Atmospheric Mountain Horizon"
           className="w-full h-full object-cover object-bottom"
         />
-        {/* Strong left-to-right gradient to give text solid dark contrast */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0A0F14] via-[#0A0F14]/85 to-[#0A0F14]/40" />
-        {/* Top & bottom smooth blend */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0A0F14] via-transparent to-[#0A0F14]/80" />
+        {/* Dark contrast vignette & bottom fade */}
+        <div className="hero-dark-overlay" />
       </div>
 
       {/* 2. Main Content Grid (Typography + Interactive 3D Model) */}

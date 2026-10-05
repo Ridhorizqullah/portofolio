@@ -120,14 +120,16 @@ export function Experience() {
   ];
 
   return (
-    <section id="experience" className="scroll-mt-20 py-24 sm:py-28 border-b border-white/[0.08] bg-[#0A0F14]">
+    <section id="experience" className="portfolio-section-spacing border-b border-white/[0.08] bg-[#0A0F14]">
       <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 space-y-14">
-        {/* Section Header - Centered */}
-        <div className="text-center max-w-2xl mx-auto space-y-3 pb-8 border-b border-white/[0.08]">
-          <h2 className="text-white text-3xl sm:text-4xl font-bold tracking-tight">
-            Experience &amp; Journey
-          </h2>
-          <p className="text-slate-400 text-sm font-mono leading-relaxed max-w-lg mx-auto">
+        {/* Section Header */}
+        <div className="section-header-row">
+          <div>
+            <h2 className="section-header-title">
+              Experience &amp; Journey
+            </h2>
+          </div>
+          <p className="section-header-caption">
             Professional backend internship, formal computer science education, and organizational leadership.
           </p>
         </div>
