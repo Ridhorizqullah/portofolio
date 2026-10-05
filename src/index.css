@@ -2433,6 +2433,17 @@ html, body, #root {
   }
 }
 
+/* Pointer Events Utility Fallbacks */
+.pointer-events-none,
+[class*="pointer-events-none"] {
+  pointer-events: none !important;
+}
+
+.pointer-events-auto,
+[class*="pointer-events-auto"] {
+  pointer-events: auto !important;
+}
+
 /* Portfolio Showcase Dedicated Filter Pills & Compact Cards */
 .portfolio-filter-container {
   display: inline-flex;
@@ -2446,13 +2457,16 @@ html, body, #root {
   max-width: 100%;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
+  position: relative;
+  z-index: 40;
+  pointer-events: auto !important;
 }
 
 .portfolio-filter-tab {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 8px 20px;
+  padding: 8px 18px;
   border-radius: 9999px;
   font-family: var(--font-mono, monospace);
   font-size: 12px;
@@ -2463,8 +2477,12 @@ html, body, #root {
   background: transparent;
   border: 1px solid transparent;
   transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
-  cursor: pointer;
+  cursor: pointer !important;
   white-space: nowrap;
+  user-select: none;
+  position: relative;
+  z-index: 41;
+  pointer-events: auto !important;
 }
 
 .portfolio-filter-tab:hover {

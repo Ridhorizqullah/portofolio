@@ -184,7 +184,11 @@ export function Projects() {
                 <button
                   key={tab}
                   type="button"
-                  onClick={() => setActiveCategory(tab)}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setActiveCategory(tab);
+                  }}
+                  style={{ cursor: 'pointer', pointerEvents: 'auto', position: 'relative', zIndex: 50 }}
                   className={`portfolio-filter-tab ${isActive ? 'active' : ''}`}
                 >
                   <span>{tab}</span>

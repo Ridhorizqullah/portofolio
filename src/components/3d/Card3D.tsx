@@ -72,6 +72,7 @@ export function Card3D({
         <div
           className="pointer-events-none absolute inset-0 rounded-[inherit] transition-opacity duration-300"
           style={{
+            pointerEvents: 'none',
             opacity: glarePos.opacity,
             background: `radial-gradient(circle 280px at ${glarePos.x}% ${glarePos.y}%, rgba(255, 255, 255, 0.35), transparent 80%)`,
           }}
